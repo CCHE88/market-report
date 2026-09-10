@@ -1,10 +1,12 @@
-name: 每日市场晨报
+name: 每日市场晨报（云端兜底）
 
 on:
   schedule:
-    # UTC 01:00 = 北京时间 09:00，周一至周五
-    # 注意：GitHub Actions 高峰期可能延迟数分钟，属正常现象
-    - cron: '0 1 * * 1-5'
+    # UTC 03:00 = 北京时间 11:00，周一至周五
+    # ⚠️ 刻意比本地自动化（桌面客户端 09:00）晚 2 小时：
+    #    先让链路 A（本地 LLM 深度版）跑，本链路做兜底。
+    #    运行前会检查 Pages 上是否已有当日研报，有则跳过，避免重复推送。
+    - cron: '0 3 * * 1-5'
   workflow_dispatch:   # 允许在 Actions 页面手动触发测试
 
 jobs:
@@ -15,23 +17,43 @@ jobs:
     env:
       # 统一时区为北京时间，避免 main.py 与 shell date 取到不同日期
       TZ: Asia/Shanghai
+      PAGES_BASE: https://cche88.github.io/market-report
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
 
+      # 兜底判定：本地链路若已发布当日研报，此处直接收工
+      - name: 检查本地链路是否已发布当日研报
+        id: gate
+        run: |
+          url="$PAGES_BASE/market-report-$(date +%F).pdf"
+          code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$url")
+          echo "probe $url -> $code"
+          if [ "$code" = "200" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "本地链路已发布当日研报，云端跳过"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            echo "未检测到当日研报，云端接手生成"
+          fi
+
       - name: 配置 Python
+        if: steps.gate.outputs.skip != 'true'
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: pip
 
       - name: 安装依赖
+        if: steps.gate.outputs.skip != 'true'
         run: pip install -r requirements.txt
 
       - name: 安装 Chromium（PDF 转换用）
+        if: steps.gate.outputs.skip != 'true'
         run: playwright install --with-deps chromium
 
       - name: 生成研报并推送微信
+        if: steps.gate.outputs.skip != 'true'
         env:
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
@@ -41,16 +63,17 @@ jobs:
         run: python main.py
 
       - name: 生成 index.html（Pages 首页）
+        if: steps.gate.outputs.skip != 'true'
         working-directory: ./output
         run: cp market-report-$(date +%F).html index.html
 
       - name: 发布到 GitHub Pages
-        if: always()
+        # ⚠️ 必须带 gate 条件：keep_files=false 会清空 gh-pages，
+        #    若跳过生成却仍执行发布，会把线上当日研报删光
+        if: steps.gate.outputs.skip != 'true'
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./output
           publish_branch: gh-pages
-          # ⚠️ 必须 false：keep_files=true 会让 gh-pages 累积历史研报，
-          #    体积累增至数十 MB 后 Pages 同步变慢甚至超时
           keep_files: false
