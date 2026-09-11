@@ -2,11 +2,11 @@ name: 每日市场晨报（云端兜底）
 
 on:
   schedule:
-    # UTC 03:00 = 北京时间 11:00，周一至周五
-    # ⚠️ 刻意比本地自动化（桌面客户端 09:00）晚 2 小时：
-    #    先让链路 A（本地 LLM 深度版）跑，本链路做兜底。
-    #    运行前会检查 Pages 上是否已有当日研报，有则跳过，避免重复推送。
-    - cron: '0 3 * * 1-5'
+    # UTC 01:00 = 北京时间 09:00，周一至周五
+    # ⚠️ 本地自动化已提前到 08:30（桌面客户端），PDF 约 08:40-08:45 上 Pages。
+    #    本链路在其后 30 分钟探测，探测到当日研报即跳过，避免重复推送。
+    #    另在 gate 里内置最多 15 分钟宽限期（见下方步骤注释），吸收客户端唤醒抖动。
+    - cron: '0 1 * * 1-5'
   workflow_dispatch:   # 允许在 Actions 页面手动触发测试
 
 jobs:
@@ -23,19 +23,26 @@ jobs:
         uses: actions/checkout@v4
 
       # 兜底判定：本地链路若已发布当日研报，此处直接收工
+      # ⚠️ 宽限期说明：本地链路 08:30 启动，数据抓取约 2 分钟、HTML+PDF 约 3 分钟、
+      #    发布到 Pages 约 5 分钟，即 PDF 通常 08:40-08:45 才上线。
+      #    若客户端唤醒有抖动、09:00 时还没发布，这里再等最多 8 分钟（每 60s 探测一次），
+      #    避免两条链路同时生成、用户收到两条重复推送。
       - name: 检查本地链路是否已发布当日研报
         id: gate
         run: |
           url="$PAGES_BASE/market-report-$(date +%F).pdf"
-          code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$url")
-          echo "probe $url -> $code"
-          if [ "$code" = "200" ]; then
-            echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "本地链路已发布当日研报，云端跳过"
-          else
-            echo "skip=false" >> "$GITHUB_OUTPUT"
-            echo "未检测到当日研报，云端接手生成"
-          fi
+          for i in $(seq 1 9); do
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$url")
+            echo "[$i/9] $(date '+%H:%M:%S') probe $url -> $code"
+            if [ "$code" = "200" ]; then
+              echo "skip=true" >> "$GITHUB_OUTPUT"
+              echo "本地链路已发布当日研报，云端跳过"
+              exit 0
+            fi
+            if [ "$i" -lt 9 ]; then sleep 60; fi
+          done
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+          echo "宽限期内仍未检测到当日研报，云端接手生成"
 
       - name: 配置 Python
         if: steps.gate.outputs.skip != 'true'
