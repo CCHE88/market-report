@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import os
+import shutil
 import sys
 from pathlib import Path
 
@@ -43,6 +44,8 @@ def main() -> None:
 
     today = dt.date.today()
     stamp = today.isoformat()
+    # 文件名规范：每日晨报YY.M.D（如 每日晨报26.9.11），与本地链路保持一致
+    pretty = f"每日晨报{today.year % 100}.{today.month}.{today.day}"
     date_label = f"{stamp}（{WEEKDAY[today.weekday()]}）"
     print(f"==> 生成 {date_label} 市场晨报")
 
@@ -80,8 +83,10 @@ def main() -> None:
     }
     html = builder.build_html(data, nar, meta)
     OUT_DIR.mkdir(exist_ok=True)
-    html_path = OUT_DIR / f"market-report-{stamp}.html"
+    html_path = OUT_DIR / f"{pretty}.html"
     html_path.write_text(html, encoding="utf-8")
+    # 兼容名：workflow 的 index.html 步骤与 gate 去重探测都依赖这个 ASCII 名
+    (OUT_DIR / f"market-report-{stamp}.html").write_text(html, encoding="utf-8")
     print(f"          HTML 已生成: {html_path}")
 
     if args.dry_run:
@@ -89,17 +94,20 @@ def main() -> None:
         return
 
     # 5. 转换 PDF
-    pdf_path = OUT_DIR / f"market-report-{stamp}.pdf"
+    pdf_path = OUT_DIR / f"{pretty}.pdf"
     has_pdf = False
     if not args.no_pdf:
         print("    [5/5] 转换 PDF ...")
         has_pdf = html_to_pdf(str(html_path), str(pdf_path))
+        if has_pdf:
+            shutil.copyfile(pdf_path, OUT_DIR / f"market-report-{stamp}.pdf")
 
     # 6. 微信推送
     if not args.no_push:
+        from urllib.parse import quote
         base = os.getenv("REPORT_BASE_URL", "").rstrip("/")
-        pdf_url = f"{base}/market-report-{stamp}.pdf" if (base and has_pdf) else None
-        html_url = f"{base}/market-report-{stamp}.html" if base else None
+        pdf_url = (f"{base}/{quote(pretty)}.pdf" if (base and has_pdf) else None)
+        html_url = f"{base}/{quote(pretty)}.html" if base else None
         content = notifier.build_content(data, nar, date_label, pdf_url, html_url)
         title = f"市场晨报 {today.month}月{today.day}日｜美港股+美元债"
         ok = notifier.send(title, content)
