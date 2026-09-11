@@ -2,126 +2,105 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>每日市场晨报 2026-09-11（周五） | CENTEN 辰腾资本</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<title>每日市场晨报 2026-09-11（周五） | CENTEN 辰腾资本 · 手机版</title>
 <style>
-@page { size: A4; margin: 9mm 11mm; }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif;
-  background: #f0f2f5; color: #1f2430; font-size: 12px; line-height: 1.42;
-  padding: 20px; max-width: 210mm; margin: 0 auto;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-}
-.report { background: #fff; padding: 0; border-radius: 10px; overflow: hidden; }
-.header {
-  background: linear-gradient(135deg, #14213d 0%, #1d3f78 50%, #1a2f5a 100%);
-  padding: 11px 16px 10px 16px; display: flex; align-items: stretch;
-  justify-content: space-between; position: relative;
-  border-top: 3px solid #c9a227; border-radius: 8px 8px 0 0;
-}
-.header-left { display: flex; flex-direction: column; gap: 5px; }
-.date-badge {
-  display: inline-block; background: rgba(255,255,255,0.12); color: #c9d4e8;
-  border: 1px solid rgba(255,255,255,0.2); border-radius: 6px;
-  padding: 3px 10px; font-size: 11px; letter-spacing: 1px; font-weight: 500;
-}
-.main-title { color: #fff; font-size: 19px; font-weight: 700; letter-spacing: 3px; }
-.logo-sidebar {
-  position: relative; z-index: 1; display: flex; align-items: center;
-  background: #fff; align-self: stretch; margin: -11px -16px -10px 0;
-  padding: 0 20px; border-radius: 0 8px 8px 0;
-}
-.logo-sidebar img { height: 30px; filter: none; border: none; border-radius: 0; box-shadow: none; }
-h2 {
-  font-size: 14.5px; font-weight: 700; color: #14213d; margin: 13px 0 8px 0;
-  padding: 5px 0 5px 12px; border-left: 4px solid #1d3f78; position: relative;
-  page-break-after: avoid; page-break-inside: avoid;
-  display: flex; align-items: center; gap: 7px; flex-wrap: wrap;
-}
-h2::before {
-  content: ""; position: absolute; left: -4px; top: 50%; transform: translateY(-50%);
-  width: 8px; height: 8px; background: #c9a227; border-radius: 50%;
-}
-h2 .tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; color: #fff; }
-.tag-macro { background: #1d3f78; }
-.tag-industry { background: #6b46c1; }
-.tag-target { background: #2d8659; }
-.tag-config { background: #b8860b; }
-.tag-decision { background: #c0392b; }
-h2 .en { font-family: Georgia, serif; font-size: 12px; color: #7d8694; font-weight: 400; font-style: italic; }
-h2 .cnt {
-  display: inline-block; padding: 1px 8px; border: 1px solid #dfe6f2;
-  border-radius: 10px; font-size: 10px; color: #5a6a7e; font-weight: 400; background: #f7f9fc;
-}
-table { width: 100%; border-collapse: collapse; margin-bottom: 9px; font-size: 11px; page-break-inside: avoid; }
-thead th {
-  background: linear-gradient(180deg, #1d3f78 0%, #14213d 100%); color: #fff;
-  padding: 5px 5px; text-align: center; font-weight: 600; font-size: 10.5px;
-  border-bottom: 2px solid #c9a227; white-space: nowrap;
-}
-tbody td {
-  padding: 3.5px 5px; border-bottom: 1px solid #eef0f4; text-align: center;
-  font-variant-numeric: tabular-nums;
-}
-tbody tr:nth-child(even) td { background: #f7f9fc; }
-.up { color: #d32f2f; font-weight: 600; }
-.down { color: #2e7d32; font-weight: 600; }
-table.overview { table-layout: fixed; }
-table.overview td, table.overview th { text-align: center; }
-table.overview .mkt {
-  font-weight: 700; color: #1d3f78; letter-spacing: 2px; vertical-align: middle;
-  background: transparent !important; font-size: 11px; border-right: 1px solid #dfe6f2;
-}
-table.overview tr.grp td { border-top: 2px solid #dfe6f2; }
-table.overview tr:nth-child(even) td { background: #fff; }
-.card {
-  border-radius: 8px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); padding: 9px 12px;
-  margin-bottom: 8px; page-break-inside: avoid; position: relative;
-}
-.card::before {
-  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 8px 0 0 8px;
-}
-.card.blue::before { background: #1d3f78; }
-.card.purple::before { background: #6b46c1; }
-.card.green::before { background: #2d8659; }
-.card.gold::before { background: #c9a227; }
-.card.red::before { background: #c0392b; }
-.card h3 { font-size: 12px; font-weight: 700; color: #14213d; margin-bottom: 4px; position: relative; padding-left: 11px; }
-.card h3::before {
-  content: ""; position: absolute; left: 0; top: 2px; width: 6px; height: 6px;
-  background: #c9a227; border-radius: 1px;
-}
-.card ul { list-style: none; padding: 0; }
-.card li { padding: 1.5px 0 1.5px 11px; position: relative; font-size: 11px; line-height: 1.42; color: #3a4150; }
-.card li::before { content: "\25B8"; position: absolute; left: 0; color: #c9a227; font-size: 9px; }
-.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; page-break-inside: avoid; }
-.sec-h4 { font-size: 13px; font-weight: 700; margin: 10px 0 6px 0; padding: 5px 9px 5px 12px; border-radius: 6px; page-break-after: avoid; page-break-inside: avoid; }
-.sec-h4-blue { background: #eef2fa; border-left: 4px solid #1d3f78; color: #14213d; }
-.sec-h4-red { background: #fef0f0; border-left: 4px solid #c0392b; color: #8b1a1a; }
-.sug { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 10px; font-weight: 600; white-space: nowrap; }
-.sug-hold { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
-.sug-buy { background: #fff3e0; color: #e65100; border: 1px solid #ffcc80; }
-.sug-watch { background: #e3f2fd; color: #1565c0; border: 1px solid #90caf9; }
-.sug-caution { background: #fce4ec; color: #c62828; border: 1px solid #ef9a9a; }
-.sug-wait { background: #f3e5f5; color: #6a1b9a; border: 1px solid #ce93d8; }
-.footer {
-  margin-top: 12px; padding: 8px 0 2px 0;
-  border-top: 2px solid transparent;
-  border-image: linear-gradient(90deg, transparent, #c9a227, transparent) 1;
-  text-align: center;
-}
-.footer .disclaimer { color: #c0392b; font-size: 10.5px; font-weight: 500; }
-.footer .info { color: #7d8694; font-size: 9.5px; margin-top: 3px; }
-@media print {
-  body { background: #fff; padding: 0; box-shadow: none; }
-  .report { border-radius: 0; }
-  .card, table, h2, .card-grid, .sec-h4 { page-break-inside: avoid; }
-  h2, .sec-h4 { page-break-after: avoid; }
-}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-text-size-adjust:100%}
+html{-webkit-tap-highlight-color:transparent}
+body{font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  background:#eef1f5;color:#1f2430;font-size:15px;line-height:1.65}
+.report{background:#fff;max-width:680px;margin:0 auto;padding-bottom:26px;overflow:hidden}
+.header{background:linear-gradient(135deg,#14213d 0%,#1d3f78 55%,#1a2f5a 100%);
+  border-top:3px solid #c9a227;padding:14px 16px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px}
+.header-left{display:flex;flex-direction:column;gap:7px;min-width:0}
+.date-badge{align-self:flex-start;background:rgba(255,255,255,.14);color:#d5dfef;
+  border:1px solid rgba(255,255,255,.22);border-radius:20px;
+  padding:3px 11px;font-size:12.5px;letter-spacing:.5px}
+.main-title{color:#fff;font-size:21px;font-weight:700;letter-spacing:3px;line-height:1.25}
+.logo-sidebar{background:#fff;border-radius:8px;padding:6px 11px;flex-shrink:0}
+.logo-sidebar img{display:block;height:23px}
+.m-body{padding:2px 16px 0}
+h2{position:relative;font-size:17px;font-weight:700;color:#14213d;
+  margin:20px 0 10px;padding:8px 12px 8px 14px;background:#f7f9fc;
+  border-left:4px solid #1d3f78;border-radius:0 8px 8px 0;
+  display:flex;flex-wrap:wrap;align-items:center;gap:7px;line-height:1.4}
+h2::before{content:"";position:absolute;left:-4px;top:50%;transform:translateY(-50%);
+  width:8px;height:8px;background:#c9a227;border-radius:50%}
+h2 .tag{padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600;color:#fff}
+.tag-macro{background:#1d3f78}.tag-industry{background:#6b46c1}
+.tag-target{background:#2d8659}.tag-config{background:#b8860b}.tag-decision{background:#c0392b}
+h2 .en{font-family:Georgia,serif;font-size:11.5px;color:#8d96a3;font-weight:400;font-style:italic}
+h2 .cnt{flex-basis:100%;font-size:12px;color:#5a6a7e;background:none;border:none;padding:0}
+.card{position:relative;background:#fbfcfe;border:1px solid #e8edf5;border-radius:10px;
+  padding:12px 14px;margin-bottom:10px}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  border-radius:10px 0 0 10px}
+.card.blue::before{background:#1d3f78}.card.purple::before{background:#6b46c1}
+.card.green::before{background:#2d8659}.card.gold::before{background:#c9a227}
+.card.red::before{background:#c0392b}
+.card h3{position:relative;font-size:15px;font-weight:700;color:#14213d;
+  margin-bottom:7px;padding-left:13px}
+.card h3::before{content:"";position:absolute;left:0;top:5px;width:7px;height:7px;
+  background:#c9a227;border-radius:2px}
+.card ul{list-style:none}
+.card li{position:relative;font-size:14px;line-height:1.72;color:#3a4150;
+  padding:3px 0 3px 14px}
+.card li::before{content:"\25B8";position:absolute;left:0;color:#c9a227;font-size:11px}
+.card-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:10px}
+.sec-h4{font-size:16px;font-weight:700;margin:16px 0 10px;padding:8px 12px;border-radius:8px}
+.sec-h4-blue{background:#eef2fa;border-left:4px solid #1d3f78;color:#14213d}
+.sec-h4-red{background:#fef0f0;border-left:4px solid #c0392b;color:#8b1a1a}
+p{font-size:12.5px;line-height:1.6;color:#7d8694;margin:0 0 12px}
+.up{color:#d32f2f;font-weight:600}
+.down{color:#2e7d32;font-weight:600}
+.sug{display:inline-block;padding:2px 9px;border-radius:10px;font-size:12px;
+  font-weight:600;white-space:nowrap}
+.sug-hold{background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7}
+.sug-buy{background:#fff3e0;color:#e65100;border:1px solid #ffcc80}
+.sug-watch{background:#e3f2fd;color:#1565c0;border:1px solid #90caf9}
+.sug-caution{background:#fce4ec;color:#c62828;border:1px solid #ef9a9a}
+.sug-wait{background:#f3e5f5;color:#6a1b9a;border:1px solid #ce93d8}
+.m-grp{margin-bottom:13px}
+.m-grp-h{font-size:13.5px;font-weight:700;color:#1d3f78;letter-spacing:2px;
+  background:#f2f6fc;border-radius:6px;padding:5px 10px;margin-bottom:5px}
+.m-ov-row{display:flex;align-items:baseline;gap:8px;padding:5px 2px 2px}
+.m-ov-name{flex:1;font-size:14.5px}
+.m-ov-num{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.m-ov-pct{font-size:14px;font-weight:600;min-width:64px;text-align:right;
+  font-variant-numeric:tabular-nums}
+.m-ov-note{font-size:12.5px;color:#7d8694;line-height:1.55;padding:0 2px 7px}
+.m-list{margin-bottom:12px}
+.m-item{background:#fff;border:1px solid #e8edf5;border-radius:10px;
+  padding:11px 13px;margin-bottom:9px}
+.m-item.m-new{background:#fff9e6;border-color:#f0dfa4}
+.m-item-hd{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.m-item-name{display:flex;flex-direction:column;font-size:16px;font-weight:700;
+  color:#14213d;line-height:1.35}
+.m-item-sub{font-size:12.5px;font-weight:400;color:#7d8694;margin-top:1px}
+.m-item-main{display:flex;align-items:baseline;gap:12px;margin:6px 0 0}
+.m-price{font-size:19px;font-weight:700;font-variant-numeric:tabular-nums;color:#1f2430}
+.m-chg{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;color:#5a6a7e}
+.m-kv{display:grid;grid-template-columns:repeat(3,1fr);gap:8px 6px;
+  margin-top:9px;padding-top:9px;border-top:1px dashed #e3e9f2}
+.m-kv-i{display:flex;flex-direction:column;gap:1px;min-width:0}
+.m-kv-i i{font-style:normal;font-size:11.5px;color:#7d8694}
+.m-kv-i b{font-size:13.5px;font-weight:600;color:#1f2430;
+  font-variant-numeric:tabular-nums;line-height:1.35}
+.m-note{margin-top:9px;padding-top:9px;border-top:1px dashed #e3e9f2;
+  font-size:13px;line-height:1.62;color:#5a6a7e}
+.m-dl{margin:22px 16px 0}
+.m-dl a{display:block;text-align:center;padding:13px;background:#14213d;color:#fff;
+  border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;
+  border-top:3px solid #c9a227}
+.footer{margin:18px 16px 0;padding:12px 0 0;border-top:1px solid #e3e9f2;text-align:center}
+.footer .disclaimer{color:#c0392b;font-size:13px;font-weight:500}
+.footer .info{color:#7d8694;font-size:12px;margin-top:5px}
 </style>
 </head>
 <body>
+<div class="report">
 <div class="report">
 
 <!-- Header -->
@@ -136,23 +115,34 @@ table.overview tr:nth-child(even) td { background: #fff; }
 </div>
 
 <!-- 一、全球市场概览 -->
+<div class="m-body">
 <h2><span class="tag tag-macro">宏观</span> 一、全球市场概览 <span class="en">GLOBAL MARKET OVERVIEW</span></h2>
-<table class="overview">
-<thead>
-<tr><th style="width:14%">市场</th><th style="width:22%">指数</th><th style="width:16%">收盘/点位</th><th style="width:12%">涨跌幅</th><th style="width:36%">关键信息</th></tr>
-</thead>
-<tbody>
-<tr class="grp"><td class="mkt" rowspan="3">美股</td><td style="text-align:left">道琼斯工业均指</td><td>52,064.10</td><td class="down">-0.60%</td><td>9/10隔夜收盘，三大指数全线下跌-0.6%至-0.65%，油价飙升+美债收益率上行施压</td></tr>
-<tr><td style="text-align:left">纳斯达克综合</td><td>26,081.72</td><td class="down">-0.65%</td><td>美光大跌-4.9%、AMD-3.36%领跌芯片，微软/谷歌逆势抗跌</td></tr>
-<tr><td style="text-align:left">标普500</td><td>7,591.70</td><td class="down">-0.58%</td><td>能源板块受油价$102创新高提振，科技/Mag7内部分化加剧</td></tr>
-<tr class="grp"><td class="mkt" rowspan="2">港股</td><td style="text-align:left">恒生指数</td><td>24,718.15</td><td class="down">-0.95%</td><td>9/11盘中-0.95%跌破24,800，紫金-3.86%拖累，中海油逆势涨+1.52%</td></tr>
-<tr><td style="text-align:left">恒生科技指数</td><td>4,271.73</td><td class="down">-1.36%</td><td>9/11盘中-1.36%，AI新股智谱/MINIMAX继续回调-2.3%/-2.4%</td></tr>
-<tr class="grp"><td class="mkt" rowspan="3">A股</td><td style="text-align:left">上证指数</td><td>3,910.92</td><td class="down">-0.60%</td><td>仅外围参考，9/11盘中-0.6%，延续缩量调整</td></tr>
-<tr><td style="text-align:left">深证成指</td><td>13,483.63</td><td class="down">-0.98%</td><td>9/11-0.98%，跌幅扩大</td></tr>
-<tr><td style="text-align:left">创业板指</td><td>3,310.01</td><td class="down">-0.85%</td><td>9/11-0.85%，新能源/医药承压</td></tr>
-</tbody>
-</table>
-<p style="font-size:10px;color:#7d8694;margin:-4px 0 6px 0;">注：美股为9月10日（周四）隔夜收盘数据；港股/A股为9月11日盘中实时数据。VIX 17.84（+7.74%），10年期美债收益率约4.95%，30年期约5.37%，美元指数99.03（-0.02%）。</p>
+<div class="m-ov"><div class="m-grp">
+<div class="m-grp-h">美股</div>
+<div class="m-ov-row"><span class="m-ov-name">道琼斯工业均指</span><span class="m-ov-num">52,064.10</span><span class="m-ov-pct ">-0.60%</span></div>
+<div class="m-ov-note">9/10隔夜收盘，三大指数全线下跌-0.6%至-0.65%，油价飙升+美债收益率上行施压</div>
+<div class="m-ov-row"><span class="m-ov-name">纳斯达克综合</span><span class="m-ov-num">26,081.72</span><span class="m-ov-pct ">-0.65%</span></div>
+<div class="m-ov-note">美光大跌-4.9%、AMD-3.36%领跌芯片，微软/谷歌逆势抗跌</div>
+<div class="m-ov-row"><span class="m-ov-name">标普500</span><span class="m-ov-num">7,591.70</span><span class="m-ov-pct ">-0.58%</span></div>
+<div class="m-ov-note">能源板块受油价$102创新高提振，科技/Mag7内部分化加剧</div>
+</div>
+<div class="m-grp">
+<div class="m-grp-h">港股</div>
+<div class="m-ov-row"><span class="m-ov-name">恒生指数</span><span class="m-ov-num">24,718.15</span><span class="m-ov-pct ">-0.95%</span></div>
+<div class="m-ov-note">9/11盘中-0.95%跌破24,800，紫金-3.86%拖累，中海油逆势涨+1.52%</div>
+<div class="m-ov-row"><span class="m-ov-name">恒生科技指数</span><span class="m-ov-num">4,271.73</span><span class="m-ov-pct ">-1.36%</span></div>
+<div class="m-ov-note">9/11盘中-1.36%，AI新股智谱/MINIMAX继续回调-2.3%/-2.4%</div>
+</div>
+<div class="m-grp">
+<div class="m-grp-h">A股</div>
+<div class="m-ov-row"><span class="m-ov-name">上证指数</span><span class="m-ov-num">3,910.92</span><span class="m-ov-pct ">-0.60%</span></div>
+<div class="m-ov-note">仅外围参考，9/11盘中-0.6%，延续缩量调整</div>
+<div class="m-ov-row"><span class="m-ov-name">深证成指</span><span class="m-ov-num">13,483.63</span><span class="m-ov-pct ">-0.98%</span></div>
+<div class="m-ov-note">9/11-0.98%，跌幅扩大</div>
+<div class="m-ov-row"><span class="m-ov-name">创业板指</span><span class="m-ov-num">3,310.01</span><span class="m-ov-pct ">-0.85%</span></div>
+<div class="m-ov-note">9/11-0.85%，新能源/医药承压</div>
+</div></div>
+<p style="color:#7d8694;margin:-4px 0 6px 0">注：美股为9月10日（周四）隔夜收盘数据；港股/A股为9月11日盘中实时数据。VIX 17.84（+7.74%），10年期美债收益率约4.95%，30年期约5.37%，美元指数99.03（-0.02%）。</p>
 
 <!-- 二、宏观与政策要闻 -->
 <h2><span class="tag tag-macro">宏观</span> 二、宏观与政策要闻 <span class="en">MACRO & POLICY</span></h2>
@@ -273,67 +263,211 @@ table.overview tr:nth-child(even) td { background: #fff; }
 
 <!-- 五、美股自选股与买卖建议 -->
 <h2><span class="tag tag-target">标的</span> 五、美股自选股与买卖建议 <span class="en">US WATCHLIST</span> <span class="cnt">16只（个股14+ETF 2）· 09-10收盘 · $</span></h2>
-<table>
-<thead>
-<tr><th style="width:13%">公司</th><th style="width:9%">现价</th><th style="width:8%">涨跌幅</th><th style="width:6%">PE</th><th style="width:9%">总市值</th><th style="width:7%">5日</th><th style="width:7%">20日</th><th style="width:8%">今年以来</th><th style="width:33%">建议</th></tr>
-</thead>
-<tbody>
-<tr><td style="text-align:left;font-weight:600">英伟达</td><td>$218.36</td><td class="down">-2.26%</td><td>27.6</td><td>$5.27T</td><td class="down">-2.59%</td><td class="down">-2.45%</td><td class="up">+17.36%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 9/10续跌-2.26%至$218.36，PE 27.6合理，Blackwell需求旺盛，YTD+17.4%</td></tr>
-<tr><td style="text-align:left;font-weight:600">台积电</td><td>$428.03</td><td class="down">-1.68%</td><td>31.9</td><td>$2.22T</td><td class="up">+3.02%</td><td class="down">-0.26%</td><td class="up">+41.73%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 9/10-1.68%，PE 31.9，5日+3.0%动能仍在，AI代工景气不改</td></tr>
-<tr><td style="text-align:left;font-weight:600">超威半导体</td><td>$503.60</td><td class="down">-3.36%</td><td>129.1</td><td>$822B</td><td class="up">+10.18%</td><td class="up">+4.28%</td><td class="up">+135.15%</td><td style="text-align:left"><span class="sug sug-watch">不追高</span> 9/10-3.36%回吐，YTD+135%涨幅巨大，PE 129极度高估，等回调</td></tr>
-<tr><td style="text-align:left;font-weight:600">博通</td><td>$360.83</td><td class="down">-0.97%</td><td>46.0</td><td>$1.72T</td><td class="down">-1.75%</td><td class="down">-13.27%</td><td class="up">+4.64%</td><td style="text-align:left"><span class="sug sug-buy">逢低关注</span> 9/10-0.97%，PE 46，20日-13.3%回调充分，AI ASIC长期逻辑稳固</td></tr>
-<tr><td style="text-align:left;font-weight:600">美光科技</td><td>$977.41</td><td class="down">-4.90%</td><td>22.1</td><td>$1.10T</td><td class="up">+2.23%</td><td class="up">+7.26%</td><td class="up">+242.66%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 9/10大跌-4.9%，PE 22.1合理，HBM需求强但短期获利了结压力</td></tr>
-<tr><td style="text-align:left;font-weight:600">闪迪</td><td>$1692.59</td><td class="down">-4.06%</td><td>22.9</td><td>$248B</td><td class="up">+8.96%</td><td class="up">+25.91%</td><td class="up">+613.03%</td><td style="text-align:left"><span class="sug sug-caution">高估警惕</span> 9/10-4.06%，YTD+613%涨幅极端，估值泡沫风险显著</td></tr>
-<tr><td style="text-align:left;font-weight:600">迈威尔科技</td><td>$226.96</td><td class="down">-3.43%</td><td>75.2</td><td>$204B</td><td class="up">+9.92%</td><td class="up">+4.55%</td><td class="up">+167.45%</td><td style="text-align:left"><span class="sug sug-watch">不追高</span> 9/10-3.43%，YTD+167%，PE 75偏高，波动剧烈</td></tr>
-<tr><td style="text-align:left;font-weight:600">微软</td><td>$492.44</td><td class="up">+0.16%</td><td>27.4</td><td>$3.66T</td><td class="down">-0.88%</td><td class="up">+0.19%</td><td class="up">+2.48%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 9/10微涨+0.16%逆势抗跌，PE 27.4合理，Azure AI需求稳固</td></tr>
-<tr><td style="text-align:left;font-weight:600">谷歌-A</td><td>$332.60</td><td class="up">+0.59%</td><td>16.7</td><td>$4.07T</td><td class="down">-1.28%</td><td class="down">-3.13%</td><td class="up">+6.46%</td><td style="text-align:left"><span class="sug sug-buy">逢低关注</span> 9/10+0.59%企稳反弹，PE 16.7为Mag7最低，搜索+TPU+Waymo价值</td></tr>
-<tr><td style="text-align:left;font-weight:600">亚马逊</td><td>$251.89</td><td class="down">-0.20%</td><td>20.3</td><td>$2.72T</td><td class="down">-1.21%</td><td class="down">-5.76%</td><td class="up">+9.13%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 9/10-0.2%相对抗跌，AWS AI订单积压，PE 20.3合理</td></tr>
-<tr><td style="text-align:left;font-weight:600">Meta</td><td>$644.38</td><td class="down">-1.42%</td><td>24.3</td><td>$1.64T</td><td class="up">+8.69%</td><td class="up">+11.32%</td><td class="down">-2.20%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 9/10-1.42%回吐昨6.55%涨幅，PE 24.3合理，AI广告变现放量</td></tr>
-<tr><td style="text-align:left;font-weight:600">特斯拉</td><td>$363.56</td><td class="down">-1.16%</td><td>336.6</td><td>$1.44T</td><td class="up">+1.83%</td><td class="up">+11.01%</td><td class="down">-19.16%</td><td style="text-align:left"><span class="sug sug-watch">观望</span> 9/10-1.16%，PE 337极度高估，YTD-19%，等Robotaxi实质催化</td></tr>
-<tr><td style="text-align:left;font-weight:600">纽蒙特</td><td>$126.14</td><td class="down">-2.00%</td><td>15.9</td><td>$133B</td><td class="up">+1.00%</td><td class="up">+7.27%</td><td class="up">+27.14%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 9/10-2.0%，金价$4362高位震荡，PE 15.9合理，20日+7.3%趋势强</td></tr>
-<tr><td style="text-align:left;font-weight:600">埃克森美孚</td><td>$165.23</td><td class="up">+0.61%</td><td>21.3</td><td>$679B</td><td class="up">+0.66%</td><td class="up">+4.10%</td><td class="up">+40.04%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 9/10+0.61%逆势涨，油价$102创新高，PE 21.3+股息2.5%+地缘溢价</td></tr>
-<tr><td style="text-align:left;font-weight:600">QQQ</td><td>$708.69</td><td class="down">-1.06%</td><td>—</td><td>—</td><td class="down">-0.08%</td><td class="down">-2.07%</td><td class="up">+15.64%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 9/10-1.06%，YTD+15.6%，AI/芯片核心配置工具</td></tr>
-<tr><td style="text-align:left;font-weight:600">黄金ETF-SPDR</td><td>$396.36</td><td class="down">-1.73%</td><td>—</td><td>—</td><td class="down">-1.59%</td><td class="down">-2.11%</td><td class="up">+0.01%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 9/10-1.73%，YTD持平，央行增持+地缘溢价，逢低配置</td></tr>
-</tbody>
-</table>
+<div class="m-list"><div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">英伟达</span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">$218.36</span><span class="m-chg ">-2.26%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>27.6</b></span><span class="m-kv-i"><i>总市值</i><b>$5.27T</b></span><span class="m-kv-i"><i>5日</i><b>-2.59%</b></span><span class="m-kv-i"><i>20日</i><b>-2.45%</b></span><span class="m-kv-i"><i>今年以来</i><b>+17.36%</b></span></div>
+  <div class="m-note">9/10续跌-2.26%至$218.36，PE 27.6合理，Blackwell需求旺盛，YTD+17.4%</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">台积电</span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">$428.03</span><span class="m-chg ">-1.68%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>31.9</b></span><span class="m-kv-i"><i>总市值</i><b>$2.22T</b></span><span class="m-kv-i"><i>5日</i><b>+3.02%</b></span><span class="m-kv-i"><i>20日</i><b>-0.26%</b></span><span class="m-kv-i"><i>今年以来</i><b>+41.73%</b></span></div>
+  <div class="m-note">9/10-1.68%，PE 31.9，5日+3.0%动能仍在，AI代工景气不改</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">超威半导体</span><span class="sug sug-watch">不追高</span></div>
+  <div class="m-item-main"><span class="m-price ">$503.60</span><span class="m-chg ">-3.36%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>129.1</b></span><span class="m-kv-i"><i>总市值</i><b>$822B</b></span><span class="m-kv-i"><i>5日</i><b>+10.18%</b></span><span class="m-kv-i"><i>20日</i><b>+4.28%</b></span><span class="m-kv-i"><i>今年以来</i><b>+135.15%</b></span></div>
+  <div class="m-note">9/10-3.36%回吐，YTD+135%涨幅巨大，PE 129极度高估，等回调</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">博通</span><span class="sug sug-buy">逢低关注</span></div>
+  <div class="m-item-main"><span class="m-price ">$360.83</span><span class="m-chg ">-0.97%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>46.0</b></span><span class="m-kv-i"><i>总市值</i><b>$1.72T</b></span><span class="m-kv-i"><i>5日</i><b>-1.75%</b></span><span class="m-kv-i"><i>20日</i><b>-13.27%</b></span><span class="m-kv-i"><i>今年以来</i><b>+4.64%</b></span></div>
+  <div class="m-note">9/10-0.97%，PE 46，20日-13.3%回调充分，AI ASIC长期逻辑稳固</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">美光科技</span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">$977.41</span><span class="m-chg ">-4.90%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>22.1</b></span><span class="m-kv-i"><i>总市值</i><b>$1.10T</b></span><span class="m-kv-i"><i>5日</i><b>+2.23%</b></span><span class="m-kv-i"><i>20日</i><b>+7.26%</b></span><span class="m-kv-i"><i>今年以来</i><b>+242.66%</b></span></div>
+  <div class="m-note">9/10大跌-4.9%，PE 22.1合理，HBM需求强但短期获利了结压力</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">闪迪</span><span class="sug sug-caution">高估警惕</span></div>
+  <div class="m-item-main"><span class="m-price ">$1692.59</span><span class="m-chg ">-4.06%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>22.9</b></span><span class="m-kv-i"><i>总市值</i><b>$248B</b></span><span class="m-kv-i"><i>5日</i><b>+8.96%</b></span><span class="m-kv-i"><i>20日</i><b>+25.91%</b></span><span class="m-kv-i"><i>今年以来</i><b>+613.03%</b></span></div>
+  <div class="m-note">9/10-4.06%，YTD+613%涨幅极端，估值泡沫风险显著</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">迈威尔科技</span><span class="sug sug-watch">不追高</span></div>
+  <div class="m-item-main"><span class="m-price ">$226.96</span><span class="m-chg ">-3.43%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>75.2</b></span><span class="m-kv-i"><i>总市值</i><b>$204B</b></span><span class="m-kv-i"><i>5日</i><b>+9.92%</b></span><span class="m-kv-i"><i>20日</i><b>+4.55%</b></span><span class="m-kv-i"><i>今年以来</i><b>+167.45%</b></span></div>
+  <div class="m-note">9/10-3.43%，YTD+167%，PE 75偏高，波动剧烈</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">微软</span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">$492.44</span><span class="m-chg ">+0.16%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>27.4</b></span><span class="m-kv-i"><i>总市值</i><b>$3.66T</b></span><span class="m-kv-i"><i>5日</i><b>-0.88%</b></span><span class="m-kv-i"><i>20日</i><b>+0.19%</b></span><span class="m-kv-i"><i>今年以来</i><b>+2.48%</b></span></div>
+  <div class="m-note">9/10微涨+0.16%逆势抗跌，PE 27.4合理，Azure AI需求稳固</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">谷歌-A</span><span class="sug sug-buy">逢低关注</span></div>
+  <div class="m-item-main"><span class="m-price ">$332.60</span><span class="m-chg ">+0.59%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>16.7</b></span><span class="m-kv-i"><i>总市值</i><b>$4.07T</b></span><span class="m-kv-i"><i>5日</i><b>-1.28%</b></span><span class="m-kv-i"><i>20日</i><b>-3.13%</b></span><span class="m-kv-i"><i>今年以来</i><b>+6.46%</b></span></div>
+  <div class="m-note">9/10+0.59%企稳反弹，PE 16.7为Mag7最低，搜索+TPU+Waymo价值</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">亚马逊</span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">$251.89</span><span class="m-chg ">-0.20%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>20.3</b></span><span class="m-kv-i"><i>总市值</i><b>$2.72T</b></span><span class="m-kv-i"><i>5日</i><b>-1.21%</b></span><span class="m-kv-i"><i>20日</i><b>-5.76%</b></span><span class="m-kv-i"><i>今年以来</i><b>+9.13%</b></span></div>
+  <div class="m-note">9/10-0.2%相对抗跌，AWS AI订单积压，PE 20.3合理</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">Meta</span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">$644.38</span><span class="m-chg ">-1.42%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>24.3</b></span><span class="m-kv-i"><i>总市值</i><b>$1.64T</b></span><span class="m-kv-i"><i>5日</i><b>+8.69%</b></span><span class="m-kv-i"><i>20日</i><b>+11.32%</b></span><span class="m-kv-i"><i>今年以来</i><b>-2.20%</b></span></div>
+  <div class="m-note">9/10-1.42%回吐昨6.55%涨幅，PE 24.3合理，AI广告变现放量</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">特斯拉</span><span class="sug sug-watch">观望</span></div>
+  <div class="m-item-main"><span class="m-price ">$363.56</span><span class="m-chg ">-1.16%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>336.6</b></span><span class="m-kv-i"><i>总市值</i><b>$1.44T</b></span><span class="m-kv-i"><i>5日</i><b>+1.83%</b></span><span class="m-kv-i"><i>20日</i><b>+11.01%</b></span><span class="m-kv-i"><i>今年以来</i><b>-19.16%</b></span></div>
+  <div class="m-note">9/10-1.16%，PE 337极度高估，YTD-19%，等Robotaxi实质催化</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">纽蒙特</span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">$126.14</span><span class="m-chg ">-2.00%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>15.9</b></span><span class="m-kv-i"><i>总市值</i><b>$133B</b></span><span class="m-kv-i"><i>5日</i><b>+1.00%</b></span><span class="m-kv-i"><i>20日</i><b>+7.27%</b></span><span class="m-kv-i"><i>今年以来</i><b>+27.14%</b></span></div>
+  <div class="m-note">9/10-2.0%，金价$4362高位震荡，PE 15.9合理，20日+7.3%趋势强</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">埃克森美孚</span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">$165.23</span><span class="m-chg ">+0.61%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>21.3</b></span><span class="m-kv-i"><i>总市值</i><b>$679B</b></span><span class="m-kv-i"><i>5日</i><b>+0.66%</b></span><span class="m-kv-i"><i>20日</i><b>+4.10%</b></span><span class="m-kv-i"><i>今年以来</i><b>+40.04%</b></span></div>
+  <div class="m-note">9/10+0.61%逆势涨，油价$102创新高，PE 21.3+股息2.5%+地缘溢价</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">QQQ</span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">$708.69</span><span class="m-chg ">-1.06%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>—</b></span><span class="m-kv-i"><i>总市值</i><b>—</b></span><span class="m-kv-i"><i>5日</i><b>-0.08%</b></span><span class="m-kv-i"><i>20日</i><b>-2.07%</b></span><span class="m-kv-i"><i>今年以来</i><b>+15.64%</b></span></div>
+  <div class="m-note">9/10-1.06%，YTD+15.6%，AI/芯片核心配置工具</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">黄金ETF-SPDR</span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">$396.36</span><span class="m-chg ">-1.73%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>—</b></span><span class="m-kv-i"><i>总市值</i><b>—</b></span><span class="m-kv-i"><i>5日</i><b>-1.59%</b></span><span class="m-kv-i"><i>20日</i><b>-2.11%</b></span><span class="m-kv-i"><i>今年以来</i><b>+0.01%</b></span></div>
+  <div class="m-note">9/10-1.73%，YTD持平，央行增持+地缘溢价，逢低配置</div>
+</div></div>
 
 <!-- 六、港股自选股与买卖建议 -->
 <h2><span class="tag tag-target">标的</span> 六、港股自选股与买卖建议 <span class="en">HK WATCHLIST</span> <span class="cnt">10只 · 09-11盘中 · HK$</span></h2>
-<table>
-<thead>
-<tr><th style="width:14%">公司</th><th style="width:8%">现价</th><th style="width:8%">涨跌幅</th><th style="width:6%">PE</th><th style="width:9%">市值</th><th style="width:7%">股息率</th><th style="width:7%">20日</th><th style="width:8%">今年以来</th><th style="width:33%">建议</th></tr>
-</thead>
-<tbody>
-<tr><td style="text-align:left;font-weight:600">腾讯控股<br><span style="font-size:10px;color:#7d8694">互联网/AI·混元</span></td><td>419.40</td><td class="down">-1.46%</td><td>14.1</td><td>HK$3.8万亿</td><td>1.27%</td><td class="down">-4.68%</td><td class="down">-29.36%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 14.1+股息1.27%，9/11盘中HK$419.4跌-1.46%，游戏出海稳健</td></tr>
-<tr><td style="text-align:left;font-weight:600">阿里巴巴-W<br><span style="font-size:10px;color:#7d8694">电商/云/AI·通义</span></td><td>105.00</td><td class="down">-1.78%</td><td>24.7</td><td>HK$2.1万亿</td><td>0.95%</td><td class="down">-12.43%</td><td class="down">-25.94%</td><td style="text-align:left"><span class="sug sug-buy">逢低关注</span> PE 24.7+通义AI，9/11盘中HK$105跌-1.78%，YTD-25.9%估值低位</td></tr>
-<tr><td style="text-align:left;font-weight:600">美团-W<br><span style="font-size:10px;color:#7d8694">本地生活/AI·自研</span></td><td>74.00</td><td class="down">-1.00%</td><td>亏损</td><td>HK$4570亿</td><td>—</td><td class="down">-15.14%</td><td class="down">-28.36%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 9/11盘中-1.0%至HK$74，PE亏损，20日-15.1%回调深但基本面未变</td></tr>
-<tr><td style="text-align:left;font-weight:600">智谱<br><span style="font-size:10px;color:#7d8694">AI大模型·智谱清言</span></td><td>800.00</td><td class="down">-2.32%</td><td>亏损</td><td>HK$3725亿</td><td>—</td><td class="down">-37.01%</td><td class="up">+588.47%</td><td style="text-align:left"><span class="sug sug-caution">高估警惕</span> 9/11盘中-2.32%，YTD+588%但PE亏损，20日-37%大幅回调，新股高波动</td></tr>
-<tr><td style="text-align:left;font-weight:600">MINIMAX-W<br><span style="font-size:10px;color:#7d8694">AI大模型·MiniMax</span></td><td>285.00</td><td class="down">-2.40%</td><td>亏损</td><td>HK$995亿</td><td>—</td><td class="down">-13.37%</td><td class="up">+72.73%</td><td style="text-align:left"><span class="sug sug-caution">高估警惕</span> 9/11盘中-2.4%，YTD+72.7%+PE亏损，新股估值泡沫风险</td></tr>
-<tr><td style="text-align:left;font-weight:600">汇丰控股<br><span style="font-size:10px;color:#7d8694">银行</span></td><td>163.30</td><td class="down">-0.85%</td><td>14.8</td><td>HK$2.8万亿</td><td>3.60%</td><td class="up">+1.55%</td><td class="up">+39.20%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 14.8+股息3.6%，9/11盘中-0.85%，YTD+39.2%，美元资产配置</td></tr>
-<tr><td style="text-align:left;font-weight:600">中国移动<br><span style="font-size:10px;color:#7d8694">电信/AI·九天</span></td><td>78.85</td><td class="">+0.00%</td><td>11.3</td><td>HK$1.7万亿</td><td>6.87%</td><td class="down">-0.38%</td><td class="up">+3.37%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 11.3+股息6.87%超高息防御，9/11盘中持平0%，稳健底仓</td></tr>
-<tr><td style="text-align:left;font-weight:600">中国海洋石油<br><span style="font-size:10px;color:#7d8694">能源</span></td><td>25.40</td><td class="up">+1.52%</td><td>7.6</td><td>HK$1.2万亿</td><td>5.87%</td><td class="up">+11.01%</td><td class="up">+28.22%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 7.6+股息5.87%低估值高息，油价$102+地缘溢价，9/11逆势+1.52%</td></tr>
-<tr><td style="text-align:left;font-weight:600">中国平安<br><span style="font-size:10px;color:#7d8694">保险</span></td><td>54.15</td><td class="down">-1.28%</td><td>5.3</td><td>HK$9805亿</td><td>5.81%</td><td class="up">+1.28%</td><td class="down">-12.67%</td><td style="text-align:left"><span class="sug sug-buy">逢低关注</span> PE 5.4+股息5.81%，极度低估，9/11盘中-1.28%</td></tr>
-<tr><td style="text-align:left;font-weight:600">紫金矿业<br><span style="font-size:10px;color:#7d8694">黄金/铜</span></td><td>35.90</td><td class="down">-3.86%</td><td>12.3</td><td>HK$9546亿</td><td>2.56%</td><td class="up">+3.16%</td><td class="up">+3.34%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 12.3+股息2.56%，9/11盘中HK$35.9跌-3.86%，金/铜双驱动</td></tr>
-</tbody>
-</table>
+<div class="m-list"><div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">腾讯控股<span class="m-item-sub"><span style="color:#7d8694">互联网/AI·混元</span></span></span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">419.40</span><span class="m-chg ">-1.46%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>14.1</b></span><span class="m-kv-i"><i>市值</i><b>HK$3.8万亿</b></span><span class="m-kv-i"><i>股息率</i><b>1.27%</b></span><span class="m-kv-i"><i>20日</i><b>-4.68%</b></span><span class="m-kv-i"><i>今年以来</i><b>-29.36%</b></span></div>
+  <div class="m-note">PE 14.1+股息1.27%，9/11盘中HK$419.4跌-1.46%，游戏出海稳健</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">阿里巴巴-W<span class="m-item-sub"><span style="color:#7d8694">电商/云/AI·通义</span></span></span><span class="sug sug-buy">逢低关注</span></div>
+  <div class="m-item-main"><span class="m-price ">105.00</span><span class="m-chg ">-1.78%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>24.7</b></span><span class="m-kv-i"><i>市值</i><b>HK$2.1万亿</b></span><span class="m-kv-i"><i>股息率</i><b>0.95%</b></span><span class="m-kv-i"><i>20日</i><b>-12.43%</b></span><span class="m-kv-i"><i>今年以来</i><b>-25.94%</b></span></div>
+  <div class="m-note">PE 24.7+通义AI，9/11盘中HK$105跌-1.78%，YTD-25.9%估值低位</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">美团-W<span class="m-item-sub"><span style="color:#7d8694">本地生活/AI·自研</span></span></span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">74.00</span><span class="m-chg ">-1.00%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>亏损</b></span><span class="m-kv-i"><i>市值</i><b>HK$4570亿</b></span><span class="m-kv-i"><i>股息率</i><b>—</b></span><span class="m-kv-i"><i>20日</i><b>-15.14%</b></span><span class="m-kv-i"><i>今年以来</i><b>-28.36%</b></span></div>
+  <div class="m-note">9/11盘中-1.0%至HK$74，PE亏损，20日-15.1%回调深但基本面未变</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">智谱<span class="m-item-sub"><span style="color:#7d8694">AI大模型·智谱清言</span></span></span><span class="sug sug-caution">高估警惕</span></div>
+  <div class="m-item-main"><span class="m-price ">800.00</span><span class="m-chg ">-2.32%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>亏损</b></span><span class="m-kv-i"><i>市值</i><b>HK$3725亿</b></span><span class="m-kv-i"><i>股息率</i><b>—</b></span><span class="m-kv-i"><i>20日</i><b>-37.01%</b></span><span class="m-kv-i"><i>今年以来</i><b>+588.47%</b></span></div>
+  <div class="m-note">9/11盘中-2.32%，YTD+588%但PE亏损，20日-37%大幅回调，新股高波动</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">MINIMAX-W<span class="m-item-sub"><span style="color:#7d8694">AI大模型·MiniMax</span></span></span><span class="sug sug-caution">高估警惕</span></div>
+  <div class="m-item-main"><span class="m-price ">285.00</span><span class="m-chg ">-2.40%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>亏损</b></span><span class="m-kv-i"><i>市值</i><b>HK$995亿</b></span><span class="m-kv-i"><i>股息率</i><b>—</b></span><span class="m-kv-i"><i>20日</i><b>-13.37%</b></span><span class="m-kv-i"><i>今年以来</i><b>+72.73%</b></span></div>
+  <div class="m-note">9/11盘中-2.4%，YTD+72.7%+PE亏损，新股估值泡沫风险</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">汇丰控股<span class="m-item-sub"><span style="color:#7d8694">银行</span></span></span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">163.30</span><span class="m-chg ">-0.85%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>14.8</b></span><span class="m-kv-i"><i>市值</i><b>HK$2.8万亿</b></span><span class="m-kv-i"><i>股息率</i><b>3.60%</b></span><span class="m-kv-i"><i>20日</i><b>+1.55%</b></span><span class="m-kv-i"><i>今年以来</i><b>+39.20%</b></span></div>
+  <div class="m-note">PE 14.8+股息3.6%，9/11盘中-0.85%，YTD+39.2%，美元资产配置</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">中国移动<span class="m-item-sub"><span style="color:#7d8694">电信/AI·九天</span></span></span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">78.85</span><span class="m-chg ">+0.00%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>11.3</b></span><span class="m-kv-i"><i>市值</i><b>HK$1.7万亿</b></span><span class="m-kv-i"><i>股息率</i><b>6.87%</b></span><span class="m-kv-i"><i>20日</i><b>-0.38%</b></span><span class="m-kv-i"><i>今年以来</i><b>+3.37%</b></span></div>
+  <div class="m-note">PE 11.3+股息6.87%超高息防御，9/11盘中持平0%，稳健底仓</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">中国海洋石油<span class="m-item-sub"><span style="color:#7d8694">能源</span></span></span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">25.40</span><span class="m-chg ">+1.52%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>7.6</b></span><span class="m-kv-i"><i>市值</i><b>HK$1.2万亿</b></span><span class="m-kv-i"><i>股息率</i><b>5.87%</b></span><span class="m-kv-i"><i>20日</i><b>+11.01%</b></span><span class="m-kv-i"><i>今年以来</i><b>+28.22%</b></span></div>
+  <div class="m-note">PE 7.6+股息5.87%低估值高息，油价$102+地缘溢价，9/11逆势+1.52%</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">中国平安<span class="m-item-sub"><span style="color:#7d8694">保险</span></span></span><span class="sug sug-buy">逢低关注</span></div>
+  <div class="m-item-main"><span class="m-price ">54.15</span><span class="m-chg ">-1.28%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>5.3</b></span><span class="m-kv-i"><i>市值</i><b>HK$9805亿</b></span><span class="m-kv-i"><i>股息率</i><b>5.81%</b></span><span class="m-kv-i"><i>20日</i><b>+1.28%</b></span><span class="m-kv-i"><i>今年以来</i><b>-12.67%</b></span></div>
+  <div class="m-note">PE 5.4+股息5.81%，极度低估，9/11盘中-1.28%</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">紫金矿业<span class="m-item-sub"><span style="color:#7d8694">黄金/铜</span></span></span><span class="sug sug-hold">持有</span></div>
+  <div class="m-item-main"><span class="m-price ">35.90</span><span class="m-chg ">-3.86%</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>PE</i><b>12.3</b></span><span class="m-kv-i"><i>市值</i><b>HK$9546亿</b></span><span class="m-kv-i"><i>股息率</i><b>2.56%</b></span><span class="m-kv-i"><i>20日</i><b>+3.16%</b></span><span class="m-kv-i"><i>今年以来</i><b>+3.34%</b></span></div>
+  <div class="m-note">PE 12.3+股息2.56%，9/11盘中HK$35.9跌-3.86%，金/铜双驱动</div>
+</div></div>
 
 <!-- 七、投资级美元债 -->
 <h2><span class="tag tag-config">配置</span> 七、投资级美元债 <span class="en">INVESTMENT-GRADE USD BONDS</span> <span class="cnt">7只（含2只新发）· 均为5年内到期 · $</span></h2>
-<p style="font-size:10px;color:#7d8694;margin-bottom:5px;">美债无风险基准：10年期4.95%、30年期5.37%、5年期4.75%（9月10日数据）。参考买入价以面值100计的估算值，以券商实时报价为准。<b style="color:#c0392b">本期新增 2 只新发债券</b>（浅黄底标注 NEW）。</p>
-<table>
-<thead>
-<tr><th style="width:14%">发行人</th><th style="width:7%">票息</th><th style="width:10%">发行日</th><th style="width:10%">到期日</th><th style="width:8%">剩余期限</th><th style="width:9%">参考YTM</th><th style="width:9%">参考买入价</th><th style="width:11%">评级</th><th style="width:22%">备注</th></tr>
-</thead>
-<tbody>
-<tr><td style="text-align:left;font-weight:600">腾讯控股</td><td>2.390%</td><td>2020-06-03</td><td>2030-06-03</td><td>~3.7年</td><td>~5.5%</td><td>≈92.5</td><td>A</td><td style="text-align:left;font-size:11px">互联网龙头，低票息但信用质量优</td></tr>
-<tr><td style="text-align:left;font-weight:600">阿里巴巴</td><td>4.875%</td><td>2024-11-26</td><td>2030-05-26</td><td>~3.7年</td><td>~5.6%</td><td>≈99.3</td><td>A</td><td style="text-align:left;font-size:11px">高票息+短期限，性价比突出</td></tr>
-<tr><td style="text-align:left;font-weight:600">埃克森美孚</td><td>3.482%</td><td>2020-03-17</td><td>2030-03-19</td><td>~3.5年</td><td>~5.4%</td><td>≈95.8</td><td>Aa2/AA+</td><td style="text-align:left;font-size:11px">美国油企，无地缘制裁风险</td></tr>
-<tr><td style="text-align:left;font-weight:600">汇丰控股</td><td>4.583%</td><td>2018-06-19</td><td>2029-06-19</td><td>~2.8年</td><td>~5.3%</td><td>≈98.8</td><td>A3/A-/A+</td><td style="text-align:left;font-size:11px">2028-06-19可赎回，短期+高票息</td></tr>
-<tr><td style="text-align:left;font-weight:600">Alphabet(谷歌)</td><td>4.100%</td><td>2026-02-13</td><td>2031-02-15</td><td>~4.4年</td><td>~5.5%</td><td>≈97.2</td><td>Aa2/AA+</td><td style="text-align:left;font-size:11px">新发行AAA级信用，PE16.7估值低位</td></tr>
-<tr style="background:#fff9e6"><td style="text-align:left;font-weight:600">戴尔科技(DELL)<span style="color:#c0392b;font-size:9px;font-weight:700;margin-left:3px">NEW</span></td><td>5.100%</td><td>2026-09-09</td><td>2029-09-15</td><td>~3.0年</td><td>~5.10%</td><td>≈100.0</td><td>Baa2/BBB+<br><span style="font-size:9px;color:#7d8694">穆迪/标普/惠誉</span></td><td style="text-align:left;font-size:11px">9/9宣布50亿美元4档发行，此为5.1%2029档，发行价99.953%，AI服务器需求驱动</td></tr>
-<tr style="background:#fff9e6"><td style="text-align:left;font-weight:600">美客多(MELI)<span style="color:#c0392b;font-size:9px;font-weight:700;margin-left:3px">NEW</span></td><td>5.850%</td><td>2026-09-09</td><td>2036-09-15</td><td>~10.0年</td><td>~5.85%</td><td>≈100.0</td><td>BBB-/Baa3/BBB-<br><span style="font-size:9px;color:#7d8694">标普/穆迪/惠誉</span></td><td style="text-align:left;font-size:11px">10亿美元10年期，拉美电商龙头NASDAQ上市，投资级最低门槛，票息5.85%具吸引力</td></tr>
-</tbody>
-</table>
+<p style="color:#7d8694;margin-bottom:5px">美债无风险基准：10年期4.95%、30年期5.37%、5年期4.75%（9月10日数据）。参考买入价以面值100计的估算值，以券商实时报价为准。<b style="color:#c0392b">本期新增 2 只新发债券</b>（浅黄底标注 NEW）。</p>
+<div class="m-list"><div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">腾讯控股</span></div>
+  <div class="m-item-main"><span class="m-price ">2.390%</span><span class="m-chg ">2030-06-03</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>发行日</i><b>2020-06-03</b></span><span class="m-kv-i"><i>剩余期限</i><b>~3.7年</b></span><span class="m-kv-i"><i>参考YTM</i><b>~5.5%</b></span><span class="m-kv-i"><i>参考买入价</i><b>≈92.5</b></span><span class="m-kv-i"><i>评级</i><b>A</b></span></div>
+  <div class="m-note">互联网龙头，低票息但信用质量优</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">阿里巴巴</span></div>
+  <div class="m-item-main"><span class="m-price ">4.875%</span><span class="m-chg ">2030-05-26</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>发行日</i><b>2024-11-26</b></span><span class="m-kv-i"><i>剩余期限</i><b>~3.7年</b></span><span class="m-kv-i"><i>参考YTM</i><b>~5.6%</b></span><span class="m-kv-i"><i>参考买入价</i><b>≈99.3</b></span><span class="m-kv-i"><i>评级</i><b>A</b></span></div>
+  <div class="m-note">高票息+短期限，性价比突出</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">埃克森美孚</span></div>
+  <div class="m-item-main"><span class="m-price ">3.482%</span><span class="m-chg ">2030-03-19</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>发行日</i><b>2020-03-17</b></span><span class="m-kv-i"><i>剩余期限</i><b>~3.5年</b></span><span class="m-kv-i"><i>参考YTM</i><b>~5.4%</b></span><span class="m-kv-i"><i>参考买入价</i><b>≈95.8</b></span><span class="m-kv-i"><i>评级</i><b>Aa2/AA+</b></span></div>
+  <div class="m-note">美国油企，无地缘制裁风险</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">汇丰控股</span></div>
+  <div class="m-item-main"><span class="m-price ">4.583%</span><span class="m-chg ">2029-06-19</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>发行日</i><b>2018-06-19</b></span><span class="m-kv-i"><i>剩余期限</i><b>~2.8年</b></span><span class="m-kv-i"><i>参考YTM</i><b>~5.3%</b></span><span class="m-kv-i"><i>参考买入价</i><b>≈98.8</b></span><span class="m-kv-i"><i>评级</i><b>A3/A-/A+</b></span></div>
+  <div class="m-note">2028-06-19可赎回，短期+高票息</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">Alphabet(谷歌)</span></div>
+  <div class="m-item-main"><span class="m-price ">4.100%</span><span class="m-chg ">2031-02-15</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>发行日</i><b>2026-02-13</b></span><span class="m-kv-i"><i>剩余期限</i><b>~4.4年</b></span><span class="m-kv-i"><i>参考YTM</i><b>~5.5%</b></span><span class="m-kv-i"><i>参考买入价</i><b>≈97.2</b></span><span class="m-kv-i"><i>评级</i><b>Aa2/AA+</b></span></div>
+  <div class="m-note">新发行AAA级信用，PE16.7估值低位</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">戴尔科技(DELL)<span style="color:#c0392b;font-weight:700;margin-left:3px">NEW</span></span></div>
+  <div class="m-item-main"><span class="m-price ">5.100%</span><span class="m-chg ">2029-09-15</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>发行日</i><b>2026-09-09</b></span><span class="m-kv-i"><i>剩余期限</i><b>~3.0年</b></span><span class="m-kv-i"><i>参考YTM</i><b>~5.10%</b></span><span class="m-kv-i"><i>参考买入价</i><b>≈100.0</b></span><span class="m-kv-i"><i>评级</i><b>Baa2/BBB+<br><span style="color:#7d8694">穆迪/标普/惠誉</span></b></span></div>
+  <div class="m-note">9/9宣布50亿美元4档发行，此为5.1%2029档，发行价99.953%，AI服务器需求驱动</div>
+</div>
+<div class="m-item">
+  <div class="m-item-hd"><span class="m-item-name">美客多(MELI)<span style="color:#c0392b;font-weight:700;margin-left:3px">NEW</span></span></div>
+  <div class="m-item-main"><span class="m-price ">5.850%</span><span class="m-chg ">2036-09-15</span></div>
+  <div class="m-kv"><span class="m-kv-i"><i>发行日</i><b>2026-09-09</b></span><span class="m-kv-i"><i>剩余期限</i><b>~10.0年</b></span><span class="m-kv-i"><i>参考YTM</i><b>~5.85%</b></span><span class="m-kv-i"><i>参考买入价</i><b>≈100.0</b></span><span class="m-kv-i"><i>评级</i><b>BBB-/Baa3/BBB-<br><span style="color:#7d8694">标普/穆迪/惠誉</span></b></span></div>
+  <div class="m-note">10亿美元10年期，拉美电商龙头NASDAQ上市，投资级最低门槛，票息5.85%具吸引力</div>
+</div></div>
 
 <!-- 八、综合建议与风险提示 -->
 <h2><span class="tag tag-decision">决策</span> 八、综合建议与风险提示 <span class="en">STRATEGY & RISK</span></h2>
@@ -388,11 +522,16 @@ table.overview tr:nth-child(even) td { background: #fff; }
 </div>
 
 <!-- Footer -->
+</div>
+<div class="m-dl">
+<a href="https://cche88.github.io/market-report/%E6%AF%8F%E6%97%A5%E6%99%A8%E6%8A%A526.9.11.pdf">查看 / 下载打印版 PDF</a>
+</div>
 <div class="footer">
   <div class="disclaimer">以上内容仅供参考，不构成投资建议</div>
   <div class="info">CENTEN 辰腾资本 · 每日市场晨报 · 2026-09-11（周五）</div>
 </div>
 
+</div>
 </div>
 </body>
 </html>
