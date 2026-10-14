@@ -95,7 +95,10 @@ table.overview tr:nth-child(even) td { background: #fff; }
 .card ul { list-style: none; padding: 0; }
 .card li { padding: 1.5px 0 1.5px 11px; position: relative; font-size: 11px; line-height: 1.42; color: #3a4150; }
 .card li::before { content: "\25B8"; position: absolute; left: 0; color: #c9a227; font-size: 9px; }
-.card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; page-break-inside: avoid; }
+.card-grid { display: block; margin-bottom: 8px; }
+.card-grid::after { content: ""; display: block; clear: both; }
+.card-grid > .card { float: left; width: 49.2%; box-sizing: border-box; }
+.card-grid > .card:nth-child(odd) { margin-right: 1.6%; }
 .sec-h4 { font-size: 13px; font-weight: 700; margin: 10px 0 6px 0; padding: 5px 9px 5px 12px; border-radius: 6px; page-break-after: avoid; page-break-inside: avoid; }
 .sec-h4-blue { background: #eef2fa; border-left: 4px solid #1d3f78; color: #14213d; }
 .sec-h4-red { background: #fef0f0; border-left: 4px solid #c0392b; color: #8b1a1a; }
@@ -116,7 +119,12 @@ table.overview tr:nth-child(even) td { background: #fff; }
 @media print {
   body { background: #fff; padding: 0; box-shadow: none; }
   .report { border-radius: 0; }
-  .card, table, h2, .card-grid, .sec-h4 { page-break-inside: avoid; }
+  .card, h2, .sec-h4 { page-break-inside: avoid; }
+  /* 长表格允许跨页断开，避免整表被推到下一页造成大片空白；
+     表头用 thead 的 display:table-header-group 自动重复。 */
+  table { page-break-inside: auto; }
+  thead { display: table-header-group; }
+  tr { page-break-inside: avoid; }
   h2, .sec-h4 { page-break-after: avoid; }
 }
 </style>
@@ -199,8 +207,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 
 <!-- 三、美股深度分析 -->
 <h2><span class="tag tag-macro">宏观</span> 三、美股深度分析 <span class="en">US MARKET DEEP DIVE</span></h2>
-<div class="card-grid">
-<div class="card blue">
+<div class="card-grid"><div class="card blue">
 <h3>1. 指数与估值水平</h3>
 <ul>
 <li>三大指数微跌：道指51,670.10（-0.35%，盘中曾涨超460点冲高回落）、标普7,805.45（-0.02%）、纳指27,204.38（-0.15%）</li>
@@ -208,8 +215,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li>银行股定基调：JPM不及预期但指引上调（股价持平）、高盛超预期、花旗/富国不佳——"业绩仍强劲，只是预期很高"</li>
 <li>10Y 5.21%高位压制分母端，盈利增长暂为对冲；本周CPI/PPI为FOMC（10/27-28）前最后关键数据</li>
 </ul>
-</div>
-<div class="card purple">
+</div><div class="card purple">
 <h3>2. 板块轮动与风格</h3>
 <ul>
 <li><b>能源领涨</b>：能源+1.74%连续第二日领涨（WTI四连涨站上$94），保健-1.33%垫底</li>
@@ -217,8 +223,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li><b>费半仅-0.3%</b>：设备/存储拖累被代工/设计对冲，结构性分化代替普跌</li>
 <li><b>防御回归</b>：保健/必需消费走强+科技内部缩圈——资金从"AI信仰"向"业绩兑现"迁移</li>
 </ul>
-</div>
-<div class="card green">
+</div><div class="card green">
 <h3>3. 资金与情绪面</h3>
 <ul>
 <li>VIX 15.27（+0.39%）：恐慌指数低位徘徊，财报+CPI双事件前市场观望</li>
@@ -226,8 +231,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li><b>中概平稳</b>：金龙指数+0.14%、理想+3%——中国资产在AI抛售中日显韧性</li>
 <li><b>欧股回落</b>：STOXX 600 -0.10%结束两日反弹，富时100 -0.06%</li>
 </ul>
-</div>
-<div class="card gold">
+</div><div class="card gold">
 <h3>4. 美联储与经济数据</h3>
 <ul>
 <li><b>威廉姆斯"终点感"</b>：今年或再加息一次、2027年无需继续——鹰派但首提停止条件，长端收益率回落（10Y -2.5bp至5.21%）</li>
@@ -235,8 +239,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li><b>数据日历</b>：周三中国CPI/PPI/进出口；本周美国9月CPI+PPI+零售——CPI若超预期将重燃加息押注并冲击10Y</li>
 <li><b>IMF警示</b>：主权债供给+AI借款推升收益率风险——期限溢价的结构性支撑未消</li>
 </ul>
-</div>
-<div class="card blue">
+</div></div><div class="card-grid"><div class="card blue">
 <h3>5. AI产业链景气跟踪</h3>
 <ul>
 <li><b>存储剧震</b>：长鑫4F² DRAM进展+年底DDR5 RDIMM/服务器内存——供给紧张叙事遭挑战，美光两日累跌、闪迪/海力士重挫；但涨价周期（HBM合约价）未逆转，属"情绪重估"而非"基本面证伪"</li>
@@ -245,8 +248,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li><b>Meta</b>：发布两款前沿AI模型+升级Muse个人智能体（$20/$100订阅）——AI订阅变现路径再进一步</li>
 <li><b>财报验证周</b>：台积电10/16财报为代工/AI基建投资延续性的关键节点</li>
 </ul>
-</div>
-<div class="card purple">
+</div><div class="card purple">
 <h3>6. 科技巨头动态</h3>
 <ul>
 <li><b>Mag7涨跌互现</b>：Meta +2.63%领涨、英伟达+0.97%、微软+0.43%（创2025年10月来收盘新高）、谷歌+0.16%、苹果+0.09%；亚马逊-0.37%、特斯拉-0.74%</li>
@@ -254,8 +256,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li><b>甲骨文+4%</b>：云需求强劲叙事延续；SpaceX -4%（上市后波动加大）</li>
 <li><b>非科技</b>：花旗-5.6%（财报）、强生-5.7%（指导不及预期）——财报季个股分化开始放大</li>
 </ul>
-</div>
-</div>
+</div></div>
 
 
 
