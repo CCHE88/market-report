@@ -43,6 +43,10 @@ h2::before {
   content: ""; position: absolute; left: -4px; top: 50%; transform: translateY(-50%);
   width: 8px; height: 8px; background: #c9a227; border-radius: 50%;
 }
+h2::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+  background: linear-gradient(90deg, #dfe6f2, #eef1f6 70%, transparent);
+}
 h2 .tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 600; color: #fff; }
 .tag-macro { background: #1d3f78; }
 .tag-industry { background: #6b46c1; }
@@ -60,6 +64,19 @@ thead th {
   padding: 5px 5px; text-align: center; font-weight: 600; font-size: 10.5px;
   border-bottom: 2px solid #c9a227; white-space: nowrap;
 }
+thead th:first-child { border-radius: 6px 0 0 0; }
+thead th:last-child { border-radius: 0 6px 0 0; }
+/* 涨跌幅胶囊（后处理把 <td class="up/down"> 包成 pill） */
+.pill { display: inline-block; min-width: 46px; padding: 1px 6px; border-radius: 9px;
+  font-size: 10.5px; font-weight: 600; text-align: center; }
+.pill.up { background: #fdecea; color: #c62828; border: 1px solid #f3c9c2; }
+.pill.down { background: #e9f5ec; color: #1e7a45; border: 1px solid #c2e2cc; }
+/* 第四板块速览条目的金色小徽章 */
+.kbd { display: inline-block; background: #fdf6e3; color: #8a6d1a; border: 1px solid #ecdcae;
+  border-radius: 4px; padding: 0 6px; font-size: 10px; font-weight: 700; margin-right: 2px; }
+/* 数据口径注释条 */
+.note { background: #f7f9fc; border-left: 3px solid #c9a227; border-radius: 0 6px 6px 0;
+  padding: 6px 10px; font-size: 10px; color: #5a6a7e; line-height: 1.5; }
 tbody td {
   padding: 3.5px 5px; border-bottom: 1px solid #eef0f4; text-align: center;
   font-variant-numeric: tabular-nums;
@@ -78,6 +95,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 .card {
   border-radius: 8px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); padding: 9px 12px;
   margin-bottom: 8px; page-break-inside: avoid; position: relative;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
 }
 .card::before {
   content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; border-radius: 8px 0 0 8px;
@@ -87,7 +105,8 @@ table.overview tr:nth-child(even) td { background: #fff; }
 .card.green::before { background: #2d8659; }
 .card.gold::before { background: #c9a227; }
 .card.red::before { background: #c0392b; }
-.card h3 { font-size: 12px; font-weight: 700; color: #14213d; margin-bottom: 4px; position: relative; padding-left: 11px; }
+.card h3 { font-size: 12px; font-weight: 700; color: #14213d; margin-bottom: 5px; position: relative; padding-left: 11px;
+  border-bottom: 1px dashed #e6eaf2; padding-bottom: 4px; }
 .card h3::before {
   content: ""; position: absolute; left: 0; top: 2px; width: 6px; height: 6px;
   background: #c9a227; border-radius: 1px;
@@ -154,17 +173,17 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <tr><th style="width:14%">市场</th><th style="width:22%">指数</th><th style="width:16%">点位</th><th style="width:12%">涨跌幅</th><th style="width:36%">关键信息</th></tr>
 </thead>
 <tbody>
-<tr class="grp"><td class="mkt" rowspan="3">美股</td><td style="text-align:left">道琼斯工业均指</td><td>51,621.48</td><td class="down">-0.09%</td><td>10月14日（周三）隔夜微跌0.09%相对抗跌；联合健康+4.7%、安进+3.2%等医疗保健股对冲跌幅</td></tr>
-<tr><td style="text-align:left">纳斯达克综合</td><td>26,692.87</td><td class="down">-1.88%</td><td>10月14日（周三）隔夜大跌1.88%（7月23日来最大单日跌幅）；费半-4.3%六连跌，AI链与存储股全线重挫</td></tr>
-<tr><td style="text-align:left">标普500</td><td>7,718.94</td><td class="down">-1.11%</td><td>10月14日（周三）隔夜收跌1.11%；9月CPI同比3.7%超预期触发加息押注升温；苹果+0.5%收盘市值首破5万亿美元</td></tr>
-<tr class="grp"><td class="mkt" rowspan="2">港股</td><td style="text-align:left">恒生指数</td><td>24,314.17</td><td class="down">-0.13%</td><td>10月14日（周三）前一日收盘微跌0.13%，主板成交1,935亿港元；油气石化/消费零售走强（中海油+1.8%），冲高回落</td></tr>
-<tr><td style="text-align:left">恒生科技指数</td><td>4,174.47</td><td class="up">+0.91%</td><td>10月14日（周三）前一日收盘逆势收涨0.91%；科网大反弹（美团+6.6%、阿里+3.1%），CPO/光通信与医药领跌</td></tr>
-<tr class="grp"><td class="mkt" rowspan="3">A股</td><td style="text-align:left">上证指数</td><td>3,767.23</td><td class="down">-0.88%</td><td>10月14日前一日收盘收跌0.88%；油气/煤炭逆势走强（陕煤新高、神华2007年11月来新高），传媒/AI漫剧活跃</td></tr>
-<tr><td style="text-align:left">深证成指</td><td>12,110.59</td><td class="down">-1.97%</td><td>10月14日前一日收盘收跌1.97%；AI硬件侧再遭抛售——光通信/玻纤/GPU领跌，工业富联-6%</td></tr>
-<tr><td style="text-align:left">创业板指</td><td>2,866.76</td><td class="down">-3.10%</td><td>10月14日前一日收盘大跌3.10%；超4,400股下跌、成交1.41万亿缩量2,625亿——存储/BC电池/CPO/电网设备重挫</td></tr>
+<tr class="grp"><td class="mkt" rowspan="3">美股</td><td style="text-align:left">道琼斯工业均指</td><td>51,621.48</td><td><span class="pill down">-0.09%</span></td><td>10月14日（周三）隔夜微跌0.09%相对抗跌；联合健康+4.7%、安进+3.2%等医疗保健股对冲跌幅</td></tr>
+<tr><td style="text-align:left">纳斯达克综合</td><td>26,692.87</td><td><span class="pill down">-1.88%</span></td><td>10月14日（周三）隔夜大跌1.88%（7月23日来最大单日跌幅）；费半-4.3%六连跌，AI链与存储股全线重挫</td></tr>
+<tr><td style="text-align:left">标普500</td><td>7,718.94</td><td><span class="pill down">-1.11%</span></td><td>10月14日（周三）隔夜收跌1.11%；9月CPI同比3.7%超预期触发加息押注升温；苹果+0.5%收盘市值首破5万亿美元</td></tr>
+<tr class="grp"><td class="mkt" rowspan="2">港股</td><td style="text-align:left">恒生指数</td><td>24,314.17</td><td><span class="pill down">-0.13%</span></td><td>10月14日（周三）前一日收盘微跌0.13%，主板成交1,935亿港元；油气石化/消费零售走强（中海油+1.8%），冲高回落</td></tr>
+<tr><td style="text-align:left">恒生科技指数</td><td>4,174.47</td><td><span class="pill up">+0.91%</span></td><td>10月14日（周三）前一日收盘逆势收涨0.91%；科网大反弹（美团+6.6%、阿里+3.1%），CPO/光通信与医药领跌</td></tr>
+<tr class="grp"><td class="mkt" rowspan="3">A股</td><td style="text-align:left">上证指数</td><td>3,767.23</td><td><span class="pill down">-0.88%</span></td><td>10月14日前一日收盘收跌0.88%；油气/煤炭逆势走强（陕煤新高、神华2007年11月来新高），传媒/AI漫剧活跃</td></tr>
+<tr><td style="text-align:left">深证成指</td><td>12,110.59</td><td><span class="pill down">-1.97%</span></td><td>10月14日前一日收盘收跌1.97%；AI硬件侧再遭抛售——光通信/玻纤/GPU领跌，工业富联-6%</td></tr>
+<tr><td style="text-align:left">创业板指</td><td>2,866.76</td><td><span class="pill down">-3.10%</span></td><td>10月14日前一日收盘大跌3.10%；超4,400股下跌、成交1.41万亿缩量2,625亿——存储/BC电池/CPO/电网设备重挫</td></tr>
 </tbody>
 </table>
-<p style="font-size:10px;color:#7d8694;margin:-4px 0 6px 0;">注：美股为10月14日（周三）隔夜收盘数据；<b>港股、A股为10月14日（周三）前一日收盘数据（今晨发稿时未开盘）</b>。VIX 16.87（+9.48%），10Y美债5.19%（10/14收盘，-2.5bp）、30Y 5.52%、2Y 4.80%、5Y 4.99%，美元指数102.53（+0.33%（2025年5月以来最高））；现货金收$4,105.2（-1.33%）、COMEX金$4,127.3（-1.20%）、白银$55.61（-5.99%，跌破56美元）；WTI收$95.17（+1.09%）、布油收$106.11（+0.40%）。</p>
+<p class="note">注：美股为10月14日（周三）隔夜收盘数据；<b>港股、A股为10月14日（周三）前一日收盘数据（今晨发稿时未开盘）</b>。VIX 16.87（+9.48%），10Y美债5.19%（10/14收盘，-2.5bp）、30Y 5.52%、2Y 4.80%、5Y 4.99%，美元指数102.53（+0.33%（2025年5月以来最高））；现货金收$4,105.2（-1.33%）、COMEX金$4,127.3（-1.20%）、白银$55.61（-5.99%，跌破56美元）；WTI收$95.17（+1.09%）、布油收$106.11（+0.40%）。</p>
 
 
 
@@ -264,12 +283,12 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <div class="card blue">
 <h3>当日热点板块速览</h3>
 <ul>
-<li><b>能源</b>：WTI $95.17（+1.09%）、布油$106.11——霍尔木兹两船再遇袭+伊朗"新战术"打击航运，风险溢价重燃；XOM <b>+1.68%</b>逆势领涨自选、中海油+1.81%（港股油气领涨）</li>
-<li><b>黄金</b>：现货金$4,105.2（-1.33%）失守$4,150——CPI超预期→强美元+加息预期双杀，白银暴跌6%放大贵金属抛压；NEM -3.49%、紫金-2.55%，$4,050-4,150区间逢低分批、地缘避险是下道支撑</li>
-<li><b>存储链</b>：抛售第三日且跌幅放大——美光-4.08%、闪迪-5.33%、SK海力士-6%、Kospi今晨再低开5.7%；HBM涨价逻辑未证伪，龙头回调分批、高估值题材规避</li>
-<li><b>AI芯片/光通信</b>：费半-4.3%六连跌、CoreWeave-15%/甲骨文-8.8%——"AI债务"叙事成新矛盾；台积电10/16财报+Anthropic ARR为两道验证，英伟达-3.16%、迈威尔-8.72%领跌</li>
-<li><b>港股互联网</b>：恒科逆势+0.91%——美团+6.6%/阿里+3.1%超跌反弹（补贴战缓和+双十一预热），AI硬件（CPO/光通信）与医药仍领跌</li>
-<li><b>资源/防御</b>：A股油气煤炭逆势（陕西煤业历史新高、中国神华2007年11月来新高）+中移动+0.56%——利率高位下高股息现金流重获青睐</li>
+<li><span class="kbd">能源</span>WTI $95.17（+1.09%）、布油$106.11——霍尔木兹两船再遇袭+伊朗"新战术"打击航运，风险溢价重燃；XOM <b>+1.68%</b>逆势领涨自选、中海油+1.81%（港股油气领涨）</li>
+<li><span class="kbd">黄金</span>现货金$4,105.2（-1.33%）失守$4,150——CPI超预期→强美元+加息预期双杀，白银暴跌6%放大贵金属抛压；NEM -3.49%、紫金-2.55%，$4,050-4,150区间逢低分批、地缘避险是下道支撑</li>
+<li><span class="kbd">存储链</span>抛售第三日且跌幅放大——美光-4.08%、闪迪-5.33%、SK海力士-6%、Kospi今晨再低开5.7%；HBM涨价逻辑未证伪，龙头回调分批、高估值题材规避</li>
+<li><span class="kbd">AI芯片/光通信</span>费半-4.3%六连跌、CoreWeave-15%/甲骨文-8.8%——"AI债务"叙事成新矛盾；台积电10/16财报+Anthropic ARR为两道验证，英伟达-3.16%、迈威尔-8.72%领跌</li>
+<li><span class="kbd">港股互联网</span>恒科逆势+0.91%——美团+6.6%/阿里+3.1%超跌反弹（补贴战缓和+双十一预热），AI硬件（CPO/光通信）与医药仍领跌</li>
+<li><span class="kbd">资源/防御</span>A股油气煤炭逆势（陕西煤业历史新高、中国神华2007年11月来新高）+中移动+0.56%——利率高位下高股息现金流重获青睐</li>
 </ul>
 </div>
 
@@ -280,22 +299,22 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <tr><th style="width:13%">公司</th><th style="width:9%">现价</th><th style="width:8%">涨跌幅</th><th style="width:6%">PE</th><th style="width:9%">总市值</th><th style="width:7%">5日</th><th style="width:7%">20日</th><th style="width:8%">今年以来</th><th style="width:33%">建议</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left;font-weight:600">英伟达<br><span style="font-size:10px;color:#7d8694">AI芯片/GPU</span></td><td>$221.30</td><td class="down">-3.16%</td><td>28.0</td><td>$5.34T</td><td class="down">-6.81%</td><td class="up">+3.46%</td><td class="up">+18.94%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -3.16%至$221.30，市值$5.34T；CPI超预期+费半六连跌拖累AI链普跌，GPU/ASIC基本面逻辑未变，回调持有不加仓</td></tr>
-<tr><td style="text-align:left;font-weight:600">台积电<br><span style="font-size:10px;color:#7d8694">半导体代工</span></td><td>$430.00</td><td class="down">-3.40%</td><td>32.0</td><td>$2.23T</td><td class="down">-8.94%</td><td class="up">+2.94%</td><td class="up">+42.90%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -3.40%至$430.00；<b>10/16（今晚盘前）财报</b>为AI链关键验证（Q3营收同比料+50%上下），财报前不赌方向</td></tr>
-<tr><td style="text-align:left;font-weight:600">超威半导体<br><span style="font-size:10px;color:#7d8694">AI芯片/CPU</span></td><td>$570.82</td><td class="down">-5.73%</td><td>146.4</td><td>$932B</td><td class="down">-11.62%</td><td class="up">+11.38%</td><td class="up">+166.54%</td><td style="text-align:left"><span class="sug sug-watch">不追高</span> 10/14 -5.73%至$570.82，YTD+166.54%；高位随费半重挫，20日+11.4%涨幅回吐中，急跌分批、不追高</td></tr>
-<tr><td style="text-align:left;font-weight:600">博通<br><span style="font-size:10px;color:#7d8694">AI ASIC</span></td><td>$346.25</td><td class="down">-3.10%</td><td>44.2</td><td>$1.65T</td><td class="down">-8.04%</td><td class="up">+2.17%</td><td class="up">+0.60%</td><td style="text-align:left"><span class="sug sug-buy">逢低关注</span> 10/14 -3.10%至$346.25；CEO"赌场投机"言论后连续回调，ASIC长逻辑未变，YTD仅+0.6%估值相对温和，逢低分批</td></tr>
-<tr><td style="text-align:left;font-weight:600">美光科技<br><span style="font-size:10px;color:#7d8694">AI存储/HBM</span></td><td>$914.13</td><td class="down">-4.08%</td><td>12.3</td><td>$1.03T</td><td class="down">-15.96%</td><td class="down">-1.32%</td><td class="up">+220.54%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -4.08%至$914.13，PE 12.3；存储抛售第三日（长鑫竞争重估+Kospi传染），5日+220.54%——涨价周期未证伪，回调持有不加仓</td></tr>
-<tr><td style="text-align:left;font-weight:600">闪迪<br><span style="font-size:10px;color:#7d8694">NAND存储</span></td><td>$1403.34</td><td class="down">-5.33%</td><td>19.0</td><td>$203B</td><td class="down">-17.08%</td><td class="down">-7.67%</td><td class="up">+491.18%</td><td style="text-align:left"><span class="sug sug-caution">高估警惕</span> 10/14 -5.33%至$1403.34，YTD+491.18%仍极端；5日-17%高位崩塌进行中，反弹减仓、严禁抄底</td></tr>
-<tr><td style="text-align:left;font-weight:600">迈威尔科技<br><span style="font-size:10px;color:#7d8694">定制AI芯片/光互连</span></td><td>$245.28</td><td class="down">-8.72%</td><td>81.2</td><td>$220B</td><td class="down">-13.82%</td><td class="up">+6.80%</td><td class="up">+189.09%</td><td style="text-align:left"><span class="sug sug-watch">不追高</span> 10/14 <b>-8.72%</b>至$245.28领跌自选——AI链去杠杆日光互连/定制芯片重灾区，20日+6.8%回吐，等待企稳</td></tr>
-<tr><td style="text-align:left;font-weight:600">微软<br><span style="font-size:10px;color:#7d8694">AI应用/云</span></td><td>$533.69</td><td class="down">-1.80%</td><td>29.7</td><td>$3.96T</td><td class="up">+0.74%</td><td class="up">+8.85%</td><td class="up">+11.06%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -1.80%至$533.69，PE 29.7；前日创2025年10月来收盘新高后随大市回落，自研芯片+云基本盘稳，持有</td></tr>
-<tr><td style="text-align:left;font-weight:600">谷歌-A<br><span style="font-size:10px;color:#7d8694">AI/TPU</span></td><td>$347.64</td><td class="down">-1.74%</td><td>17.4</td><td>$4.25T</td><td class="down">-0.82%</td><td class="up">+1.39%</td><td class="up">+11.28%</td><td style="text-align:left"><span class="sug sug-buy">逢低关注</span> 10/14 -1.74%至$347.64，PE 17.4为Mag7最低；随大市回调无个股利空，回调布局</td></tr>
-<tr><td style="text-align:left;font-weight:600">亚马逊<br><span style="font-size:10px;color:#7d8694">AI云/Trainium</span></td><td>$254.08</td><td class="down">-1.74%</td><td>20.4</td><td>$2.74T</td><td class="down">-2.25%</td><td class="up">+3.30%</td><td class="up">+10.08%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -1.74%至$254.08，PE 20.4；AI债务叙事（高杠杆AI基建）压制高杠杆云商，AWS现金流雄厚，持有</td></tr>
-<tr><td style="text-align:left;font-weight:600">Meta<br><span style="font-size:10px;color:#7d8694">AI应用/智能体</span></td><td>$737.54</td><td class="down">-3.27%</td><td>27.8</td><td>$1.88T</td><td class="up">+2.25%</td><td class="up">+9.63%</td><td class="up">+12.02%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -3.27%至$737.54，PE 27.8；领跌Mag7——前日+2.63%后回吐，AI资本开支担忧仍在定价，持有不加仓</td></tr>
-<tr><td style="text-align:left;font-weight:600">特斯拉<br><span style="font-size:10px;color:#7d8694">人形机器人</span></td><td>$367.16</td><td class="down">-2.15%</td><td>340.0</td><td>$1.45T</td><td class="down">-2.82%</td><td class="up">+2.54%</td><td class="down">-18.36%</td><td style="text-align:left"><span class="sug sug-watch">观望</span> 10/14 -2.15%至$367.16，PE 340.0极高、YTD-18.36%；缺乏催化，观望</td></tr>
-<tr><td style="text-align:left;font-weight:600">纽蒙特<br><span style="font-size:10px;color:#7d8694">全球最大金矿商</span></td><td>$111.56</td><td class="down">-3.49%</td><td>14.1</td><td>$118B</td><td class="down">-1.74%</td><td class="down">-8.38%</td><td class="up">+12.45%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -3.49%至$111.56，PE 14.1、股息0.92%；金价大跌至$4,105拖累金矿股，CPI落地后若地缘发酵金价有望企稳，持有</td></tr>
-<tr><td style="text-align:left;font-weight:600">埃克森美孚<br><span style="font-size:10px;color:#7d8694">油气</span></td><td>$177.01</td><td class="up">+1.68%</td><td>22.8</td><td>$728B</td><td class="up">+7.90%</td><td class="up">+8.38%</td><td class="up">+50.03%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 <b>+1.68%</b>至$177.01，PE 22.8+股息2.33%；逆势领涨自选——霍尔木兹船只遇袭、WTI站上$95，高油价+高股息攻守兼备</td></tr>
-<tr><td style="text-align:left;font-weight:600">QQQ<br><span style="font-size:10px;color:#7d8694">ETF</span></td><td>$728.95</td><td class="down">-1.97%</td><td>—</td><td>—</td><td class="down">-3.80%</td><td class="up">+3.54%</td><td class="up">+19.07%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -1.97%至$728.95，YTD+19.07%；纳指100核心底仓，纳指创7月来最大单日跌幅后不放大敞口</td></tr>
-<tr><td style="text-align:left;font-weight:600">黄金ETF-SPDR<br><span style="font-size:10px;color:#7d8694">黄金ETF</span></td><td>$375.99</td><td class="down">-1.49%</td><td>—</td><td>—</td><td class="up">+0.03%</td><td class="down">-4.02%</td><td class="down">-5.13%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -1.49%至$375.99；金价失守$4,150收$4,105——强美元+加息预期压制，白银暴跌6%拖累贵金属情绪，$4,050-4,150区间逢低分批</td></tr>
+<tr><td style="text-align:left;font-weight:600">英伟达<br><span style="font-size:10px;color:#7d8694">AI芯片/GPU</span></td><td>$221.30</td><td><span class="pill down">-3.16%</span></td><td>28.0</td><td>$5.34T</td><td><span class="pill down">-6.81%</span></td><td><span class="pill up">+3.46%</span></td><td><span class="pill up">+18.94%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -3.16%至$221.30，市值$5.34T；CPI超预期+费半六连跌拖累AI链普跌，GPU/ASIC基本面逻辑未变，回调持有不加仓</td></tr>
+<tr><td style="text-align:left;font-weight:600">台积电<br><span style="font-size:10px;color:#7d8694">半导体代工</span></td><td>$430.00</td><td><span class="pill down">-3.40%</span></td><td>32.0</td><td>$2.23T</td><td><span class="pill down">-8.94%</span></td><td><span class="pill up">+2.94%</span></td><td><span class="pill up">+42.90%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -3.40%至$430.00；<b>10/16（今晚盘前）财报</b>为AI链关键验证（Q3营收同比料+50%上下），财报前不赌方向</td></tr>
+<tr><td style="text-align:left;font-weight:600">超威半导体<br><span style="font-size:10px;color:#7d8694">AI芯片/CPU</span></td><td>$570.82</td><td><span class="pill down">-5.73%</span></td><td>146.4</td><td>$932B</td><td><span class="pill down">-11.62%</span></td><td><span class="pill up">+11.38%</span></td><td><span class="pill up">+166.54%</span></td><td style="text-align:left"><span class="sug sug-watch">不追高</span> 10/14 -5.73%至$570.82，YTD+166.54%；高位随费半重挫，20日+11.4%涨幅回吐中，急跌分批、不追高</td></tr>
+<tr><td style="text-align:left;font-weight:600">博通<br><span style="font-size:10px;color:#7d8694">AI ASIC</span></td><td>$346.25</td><td><span class="pill down">-3.10%</span></td><td>44.2</td><td>$1.65T</td><td><span class="pill down">-8.04%</span></td><td><span class="pill up">+2.17%</span></td><td><span class="pill up">+0.60%</span></td><td style="text-align:left"><span class="sug sug-buy">逢低关注</span> 10/14 -3.10%至$346.25；CEO"赌场投机"言论后连续回调，ASIC长逻辑未变，YTD仅+0.6%估值相对温和，逢低分批</td></tr>
+<tr><td style="text-align:left;font-weight:600">美光科技<br><span style="font-size:10px;color:#7d8694">AI存储/HBM</span></td><td>$914.13</td><td><span class="pill down">-4.08%</span></td><td>12.3</td><td>$1.03T</td><td><span class="pill down">-15.96%</span></td><td><span class="pill down">-1.32%</span></td><td><span class="pill up">+220.54%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -4.08%至$914.13，PE 12.3；存储抛售第三日（长鑫竞争重估+Kospi传染），5日+220.54%——涨价周期未证伪，回调持有不加仓</td></tr>
+<tr><td style="text-align:left;font-weight:600">闪迪<br><span style="font-size:10px;color:#7d8694">NAND存储</span></td><td>$1403.34</td><td><span class="pill down">-5.33%</span></td><td>19.0</td><td>$203B</td><td><span class="pill down">-17.08%</span></td><td><span class="pill down">-7.67%</span></td><td><span class="pill up">+491.18%</span></td><td style="text-align:left"><span class="sug sug-caution">高估警惕</span> 10/14 -5.33%至$1403.34，YTD+491.18%仍极端；5日-17%高位崩塌进行中，反弹减仓、严禁抄底</td></tr>
+<tr><td style="text-align:left;font-weight:600">迈威尔科技<br><span style="font-size:10px;color:#7d8694">定制AI芯片/光互连</span></td><td>$245.28</td><td><span class="pill down">-8.72%</span></td><td>81.2</td><td>$220B</td><td><span class="pill down">-13.82%</span></td><td><span class="pill up">+6.80%</span></td><td><span class="pill up">+189.09%</span></td><td style="text-align:left"><span class="sug sug-watch">不追高</span> 10/14 <b>-8.72%</b>至$245.28领跌自选——AI链去杠杆日光互连/定制芯片重灾区，20日+6.8%回吐，等待企稳</td></tr>
+<tr><td style="text-align:left;font-weight:600">微软<br><span style="font-size:10px;color:#7d8694">AI应用/云</span></td><td>$533.69</td><td><span class="pill down">-1.80%</span></td><td>29.7</td><td>$3.96T</td><td><span class="pill up">+0.74%</span></td><td><span class="pill up">+8.85%</span></td><td><span class="pill up">+11.06%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -1.80%至$533.69，PE 29.7；前日创2025年10月来收盘新高后随大市回落，自研芯片+云基本盘稳，持有</td></tr>
+<tr><td style="text-align:left;font-weight:600">谷歌-A<br><span style="font-size:10px;color:#7d8694">AI/TPU</span></td><td>$347.64</td><td><span class="pill down">-1.74%</span></td><td>17.4</td><td>$4.25T</td><td><span class="pill down">-0.82%</span></td><td><span class="pill up">+1.39%</span></td><td><span class="pill up">+11.28%</span></td><td style="text-align:left"><span class="sug sug-buy">逢低关注</span> 10/14 -1.74%至$347.64，PE 17.4为Mag7最低；随大市回调无个股利空，回调布局</td></tr>
+<tr><td style="text-align:left;font-weight:600">亚马逊<br><span style="font-size:10px;color:#7d8694">AI云/Trainium</span></td><td>$254.08</td><td><span class="pill down">-1.74%</span></td><td>20.4</td><td>$2.74T</td><td><span class="pill down">-2.25%</span></td><td><span class="pill up">+3.30%</span></td><td><span class="pill up">+10.08%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -1.74%至$254.08，PE 20.4；AI债务叙事（高杠杆AI基建）压制高杠杆云商，AWS现金流雄厚，持有</td></tr>
+<tr><td style="text-align:left;font-weight:600">Meta<br><span style="font-size:10px;color:#7d8694">AI应用/智能体</span></td><td>$737.54</td><td><span class="pill down">-3.27%</span></td><td>27.8</td><td>$1.88T</td><td><span class="pill up">+2.25%</span></td><td><span class="pill up">+9.63%</span></td><td><span class="pill up">+12.02%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -3.27%至$737.54，PE 27.8；领跌Mag7——前日+2.63%后回吐，AI资本开支担忧仍在定价，持有不加仓</td></tr>
+<tr><td style="text-align:left;font-weight:600">特斯拉<br><span style="font-size:10px;color:#7d8694">人形机器人</span></td><td>$367.16</td><td><span class="pill down">-2.15%</span></td><td>340.0</td><td>$1.45T</td><td><span class="pill down">-2.82%</span></td><td><span class="pill up">+2.54%</span></td><td><span class="pill down">-18.36%</span></td><td style="text-align:left"><span class="sug sug-watch">观望</span> 10/14 -2.15%至$367.16，PE 340.0极高、YTD-18.36%；缺乏催化，观望</td></tr>
+<tr><td style="text-align:left;font-weight:600">纽蒙特<br><span style="font-size:10px;color:#7d8694">全球最大金矿商</span></td><td>$111.56</td><td><span class="pill down">-3.49%</span></td><td>14.1</td><td>$118B</td><td><span class="pill down">-1.74%</span></td><td><span class="pill down">-8.38%</span></td><td><span class="pill up">+12.45%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -3.49%至$111.56，PE 14.1、股息0.92%；金价大跌至$4,105拖累金矿股，CPI落地后若地缘发酵金价有望企稳，持有</td></tr>
+<tr><td style="text-align:left;font-weight:600">埃克森美孚<br><span style="font-size:10px;color:#7d8694">油气</span></td><td>$177.01</td><td><span class="pill up">+1.68%</span></td><td>22.8</td><td>$728B</td><td><span class="pill up">+7.90%</span></td><td><span class="pill up">+8.38%</span></td><td><span class="pill up">+50.03%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 <b>+1.68%</b>至$177.01，PE 22.8+股息2.33%；逆势领涨自选——霍尔木兹船只遇袭、WTI站上$95，高油价+高股息攻守兼备</td></tr>
+<tr><td style="text-align:left;font-weight:600">QQQ<br><span style="font-size:10px;color:#7d8694">ETF</span></td><td>$728.95</td><td><span class="pill down">-1.97%</span></td><td>—</td><td>—</td><td><span class="pill down">-3.80%</span></td><td><span class="pill up">+3.54%</span></td><td><span class="pill up">+19.07%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -1.97%至$728.95，YTD+19.07%；纳指100核心底仓，纳指创7月来最大单日跌幅后不放大敞口</td></tr>
+<tr><td style="text-align:left;font-weight:600">黄金ETF-SPDR<br><span style="font-size:10px;color:#7d8694">黄金ETF</span></td><td>$375.99</td><td><span class="pill down">-1.49%</span></td><td>—</td><td>—</td><td><span class="pill up">+0.03%</span></td><td><span class="pill down">-4.02%</span></td><td><span class="pill down">-5.13%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> 10/14 -1.49%至$375.99；金价失守$4,150收$4,105——强美元+加息预期压制，白银暴跌6%拖累贵金属情绪，$4,050-4,150区间逢低分批</td></tr>
 </tbody>
 </table>
 
@@ -306,16 +325,16 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <tr><th style="width:14%">公司</th><th style="width:8%">现价</th><th style="width:8%">涨跌幅</th><th style="width:6%">PE</th><th style="width:9%">市值</th><th style="width:7%">股息率</th><th style="width:7%">20日</th><th style="width:8%">今年以来</th><th style="width:33%">建议</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left;font-weight:600">腾讯控股<br><span style="font-size:10px;color:#7d8694">互联网/AI·混元</span></td><td>423.40</td><td class="down">-0.42%</td><td>14.2</td><td>HK$3.85万亿</td><td>1.28%</td><td class="down">-4.25%</td><td class="down">-30.10%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 14.2+股息1.28%，前一日收盘-0.42%报423.40；科网普涨日微跌跑输，回购持续托底，窄幅整固，持有</td></tr>
-<tr><td style="text-align:left;font-weight:600">阿里巴巴-W<br><span style="font-size:10px;color:#7d8694">电商/云/AI·通义</span></td><td>110.50</td><td class="up">+3.08%</td><td>26.1</td><td>HK$2.20万亿</td><td>0.92%</td><td class="up">+1.88%</td><td class="down">-23.68%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> 前一日收盘<b>+3.08%</b>报110.50，YTD-23.68%；+3.1%领涨科网——双十一预热+云/AI订单叙事升温，低估值修复启动，持有</td></tr>
-<tr><td style="text-align:left;font-weight:600">美团-W<br><span style="font-size:10px;color:#7d8694">本地生活/AI·自研</span></td><td>77.10</td><td class="up">+6.64%</td><td>亏损</td><td>HK$4761亿</td><td>—</td><td class="up">+2.01%</td><td class="down">-26.48%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE亏损，前一日收盘<b>+6.64%</b>报77.10；+6.6%领涨自选——外卖补贴战缓和+Keeta扩张叙事发酵，超跌反弹动能强，持有</td></tr>
-<tr><td style="text-align:left;font-weight:600">智谱<br><span style="font-size:10px;color:#7d8694">AI大模型·智谱清言</span></td><td>572.00</td><td class="down">-4.83%</td><td>亏损</td><td>HK$2789亿</td><td>—</td><td class="down">-25.69%</td><td class="up">+360.41%</td><td style="text-align:left"><span class="sug sug-caution">高估警惕</span> PE亏损，前一日收盘-4.83%报572.00，YTD+360.41%；-4.8%领跌自选、5日-16.8%——AI新股估值消化未结束，不参与</td></tr>
-<tr><td style="text-align:left;font-weight:600">MINIMAX-W<br><span style="font-size:10px;color:#7d8694">AI大模型·MiniMax</span></td><td>204.20</td><td class="down">-3.68%</td><td>亏损</td><td>HK$720亿</td><td>—</td><td class="down">-18.49%</td><td class="up">+17.58%</td><td style="text-align:left"><span class="sug sug-caution">高估警惕</span> PE亏损，前一日收盘-3.68%报204.20，YTD+17.58%；-3.7%随AI新股续弱，商业化验证不足，不参与</td></tr>
-<tr><td style="text-align:left;font-weight:600">汇丰控股<br><span style="font-size:10px;color:#7d8694">银行</span></td><td>148.00</td><td class="down">-1.79%</td><td>13.3</td><td>HK$2.54万亿</td><td>3.99%</td><td class="down">-8.45%</td><td class="up">+25.56%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 13.3+股息3.99%，前一日收盘-1.79%报148.00；-1.8%随金融板块整固（美银财报不佳拖累银行情绪），高息差逻辑未变，持有</td></tr>
-<tr><td style="text-align:left;font-weight:600">中国移动<br><span style="font-size:10px;color:#7d8694">电信/AI·九天</span></td><td>80.90</td><td class="up">+0.56%</td><td>11.6</td><td>HK$1.76万亿</td><td>6.69%</td><td class="up">+2.08%</td><td class="up">+6.19%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 11.6+股息6.69%超高息防御，前一日收盘+0.56%报80.90；+0.6%逆势收红，避险资金回流高股息，持有</td></tr>
-<tr><td style="text-align:left;font-weight:600">中国海洋石油<br><span style="font-size:10px;color:#7d8694">能源</span></td><td>24.72</td><td class="up">+1.81%</td><td>7.4</td><td>HK$1.17万亿</td><td>6.02%</td><td class="up">+1.64%</td><td class="up">+24.99%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 7.4+股息6.02%低估值高息，前一日收盘<b>+1.81%</b>报24.72；+1.8%——WTI站上$95+港股油气领涨，股息垫+油价共振，持有</td></tr>
-<tr><td style="text-align:left;font-weight:600">中国平安<br><span style="font-size:10px;color:#7d8694">保险</span></td><td>50.60</td><td class="down">-1.46%</td><td>5.0</td><td>HK$9162亿</td><td>6.23%</td><td class="down">-4.45%</td><td class="down">-18.64%</td><td style="text-align:left"><span class="sug sug-buy">逢低关注</span> PE 5.0+股息6.23%极度低估，前一日收盘-1.46%报50.60；-1.5%随大市回调，加息环境利差改善，回调分批</td></tr>
-<tr><td style="text-align:left;font-weight:600">紫金矿业<br><span style="font-size:10px;color:#7d8694">黄金/铜</span></td><td>32.06</td><td class="down">-2.55%</td><td>10.9</td><td>HK$8525亿</td><td>2.90%</td><td class="down">-7.90%</td><td class="down">-8.75%</td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 10.9+股息2.90%，前一日收盘<b>-2.55%</b>报32.06；-2.6%——金价大跌1.3%拖累，金铜双驱动长逻辑未变，回调分批</td></tr>
+<tr><td style="text-align:left;font-weight:600">腾讯控股<br><span style="font-size:10px;color:#7d8694">互联网/AI·混元</span></td><td>423.40</td><td><span class="pill down">-0.42%</span></td><td>14.2</td><td>HK$3.85万亿</td><td>1.28%</td><td><span class="pill down">-4.25%</span></td><td><span class="pill down">-30.10%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 14.2+股息1.28%，前一日收盘-0.42%报423.40；科网普涨日微跌跑输，回购持续托底，窄幅整固，持有</td></tr>
+<tr><td style="text-align:left;font-weight:600">阿里巴巴-W<br><span style="font-size:10px;color:#7d8694">电商/云/AI·通义</span></td><td>110.50</td><td><span class="pill up">+3.08%</span></td><td>26.1</td><td>HK$2.20万亿</td><td>0.92%</td><td><span class="pill up">+1.88%</span></td><td><span class="pill down">-23.68%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> 前一日收盘<b>+3.08%</b>报110.50，YTD-23.68%；+3.1%领涨科网——双十一预热+云/AI订单叙事升温，低估值修复启动，持有</td></tr>
+<tr><td style="text-align:left;font-weight:600">美团-W<br><span style="font-size:10px;color:#7d8694">本地生活/AI·自研</span></td><td>77.10</td><td><span class="pill up">+6.64%</span></td><td>亏损</td><td>HK$4761亿</td><td>—</td><td><span class="pill up">+2.01%</span></td><td><span class="pill down">-26.48%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE亏损，前一日收盘<b>+6.64%</b>报77.10；+6.6%领涨自选——外卖补贴战缓和+Keeta扩张叙事发酵，超跌反弹动能强，持有</td></tr>
+<tr><td style="text-align:left;font-weight:600">智谱<br><span style="font-size:10px;color:#7d8694">AI大模型·智谱清言</span></td><td>572.00</td><td><span class="pill down">-4.83%</span></td><td>亏损</td><td>HK$2789亿</td><td>—</td><td><span class="pill down">-25.69%</span></td><td><span class="pill up">+360.41%</span></td><td style="text-align:left"><span class="sug sug-caution">高估警惕</span> PE亏损，前一日收盘-4.83%报572.00，YTD+360.41%；-4.8%领跌自选、5日-16.8%——AI新股估值消化未结束，不参与</td></tr>
+<tr><td style="text-align:left;font-weight:600">MINIMAX-W<br><span style="font-size:10px;color:#7d8694">AI大模型·MiniMax</span></td><td>204.20</td><td><span class="pill down">-3.68%</span></td><td>亏损</td><td>HK$720亿</td><td>—</td><td><span class="pill down">-18.49%</span></td><td><span class="pill up">+17.58%</span></td><td style="text-align:left"><span class="sug sug-caution">高估警惕</span> PE亏损，前一日收盘-3.68%报204.20，YTD+17.58%；-3.7%随AI新股续弱，商业化验证不足，不参与</td></tr>
+<tr><td style="text-align:left;font-weight:600">汇丰控股<br><span style="font-size:10px;color:#7d8694">银行</span></td><td>148.00</td><td><span class="pill down">-1.79%</span></td><td>13.3</td><td>HK$2.54万亿</td><td>3.99%</td><td><span class="pill down">-8.45%</span></td><td><span class="pill up">+25.56%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 13.3+股息3.99%，前一日收盘-1.79%报148.00；-1.8%随金融板块整固（美银财报不佳拖累银行情绪），高息差逻辑未变，持有</td></tr>
+<tr><td style="text-align:left;font-weight:600">中国移动<br><span style="font-size:10px;color:#7d8694">电信/AI·九天</span></td><td>80.90</td><td><span class="pill up">+0.56%</span></td><td>11.6</td><td>HK$1.76万亿</td><td>6.69%</td><td><span class="pill up">+2.08%</span></td><td><span class="pill up">+6.19%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 11.6+股息6.69%超高息防御，前一日收盘+0.56%报80.90；+0.6%逆势收红，避险资金回流高股息，持有</td></tr>
+<tr><td style="text-align:left;font-weight:600">中国海洋石油<br><span style="font-size:10px;color:#7d8694">能源</span></td><td>24.72</td><td><span class="pill up">+1.81%</span></td><td>7.4</td><td>HK$1.17万亿</td><td>6.02%</td><td><span class="pill up">+1.64%</span></td><td><span class="pill up">+24.99%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 7.4+股息6.02%低估值高息，前一日收盘<b>+1.81%</b>报24.72；+1.8%——WTI站上$95+港股油气领涨，股息垫+油价共振，持有</td></tr>
+<tr><td style="text-align:left;font-weight:600">中国平安<br><span style="font-size:10px;color:#7d8694">保险</span></td><td>50.60</td><td><span class="pill down">-1.46%</span></td><td>5.0</td><td>HK$9162亿</td><td>6.23%</td><td><span class="pill down">-4.45%</span></td><td><span class="pill down">-18.64%</span></td><td style="text-align:left"><span class="sug sug-buy">逢低关注</span> PE 5.0+股息6.23%极度低估，前一日收盘-1.46%报50.60；-1.5%随大市回调，加息环境利差改善，回调分批</td></tr>
+<tr><td style="text-align:left;font-weight:600">紫金矿业<br><span style="font-size:10px;color:#7d8694">黄金/铜</span></td><td>32.06</td><td><span class="pill down">-2.55%</span></td><td>10.9</td><td>HK$8525亿</td><td>2.90%</td><td><span class="pill down">-7.90%</span></td><td><span class="pill down">-8.75%</span></td><td style="text-align:left"><span class="sug sug-hold">持有</span> PE 10.9+股息2.90%，前一日收盘<b>-2.55%</b>报32.06；-2.6%——金价大跌1.3%拖累，金铜双驱动长逻辑未变，回调分批</td></tr>
 </tbody>
 </table>
 
@@ -323,7 +342,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 
 <!-- 七、投资级美元债 -->
 <h2><span class="tag tag-config">配置</span> 七、投资级美元债 <span class="en">INVESTMENT-GRADE USD BONDS</span> <span class="cnt">9只（含2只新发）· $</span></h2>
-<p style="font-size:10px;color:#7d8694;margin-bottom:5px;">美债无风险基准：10年期5.19%、30年期5.52%、2年期4.80%、5年期4.99%（10/14收盘，长端续降2-4bp迎喘息）。<b style="color:#c0392b">本期无新增合格IG定价</b>——经检索（cbonds/BofA新发清单/财经媒体），10/13-14全球IG一级市场无新定价（BAC条目均为存量列表），财报周+CPI冲击下发行窗口观望，宁缺毋滥。AltaGas/Paramount为本月新发仍在跟踪窗口内；10Y美债5.19%高位，IG存量短中期锁息性价比突出。参考买入价以面值100计的估算值，以券商实时报价为准。</p>
+<p class="note" style="margin-bottom:5px">美债无风险基准：10年期5.19%、30年期5.52%、2年期4.80%、5年期4.99%（10/14收盘，长端续降2-4bp迎喘息）。<b style="color:#c0392b">本期无新增合格IG定价</b>——经检索（cbonds/BofA新发清单/财经媒体），10/13-14全球IG一级市场无新定价（BAC条目均为存量列表），财报周+CPI冲击下发行窗口观望，宁缺毋滥。AltaGas/Paramount为本月新发仍在跟踪窗口内；10Y美债5.19%高位，IG存量短中期锁息性价比突出。参考买入价以面值100计的估算值，以券商实时报价为准。</p>
 <table>
 <thead>
 <tr><th style="width:14%">发行人</th><th style="width:7%">票息</th><th style="width:10%">发行日</th><th style="width:10%">到期日</th><th style="width:8%">剩余期限</th><th style="width:9%">参考YTM</th><th style="width:9%">参考买入价</th><th style="width:11%">评级</th><th style="width:22%">备注</th></tr>
@@ -366,7 +385,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <h3>大类资产与固收</h3>
 <ul>
 <li><b>固收</b>：10Y 5.19%（-2.5bp）、30Y 5.52%四连降——CPI冲击下长端意外走稳；本期无合格IG新发，存量短中期持仓锁息为主，关注收益率冲高再配置窗口</li>
-<li><b>黄金</b>：现货金$4,105.2（-1.33%）——加息预期+强美元双杀；但霍尔木兹地缘升级与央行购金构成下道支撑，$4,050-4,150区间分批而非追空</li>
+<li><span class="kbd">黄金</span>现货金$4,105.2（-1.33%）——加息预期+强美元双杀；但霍尔木兹地缘升级与央行购金构成下道支撑，$4,050-4,150区间分批而非追空</li>
 <li><b>原油</b>：WTI $95.17、布油$106.11——伊朗"新战术"打击航运+美以选举前打击风险，风险溢价易涨难跌；IEA警示柴油紧缺至2027，持有能源股收租优于单边追油</li>
 <li><b>现金</b>：维持10%-15%；今晚美国PPI/零售+Anthropic披露+10/16台积电财报，事件密集不满仓</li>
 </ul>
