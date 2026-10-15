@@ -3,9 +3,8 @@ name: 每日市场晨报（云端兜底）
 on:
   schedule:
     # UTC 01:00 = 北京时间 09:00，周一至周五
-    # ⚠️ 本地自动化已提前到 08:30（桌面客户端），PDF 约 08:40-08:45 上 Pages。
-    #    本链路在其后 30 分钟探测，探测到当日研报即跳过，避免重复推送。
-    #    另在 gate 里内置最多 8 分钟宽限期（见下方步骤注释），吸收客户端唤醒抖动。
+    # ⚠️ 本地自动化 08:00 启动，约 08:45-09:00 完成并写入双向去重标记。
+    #    本链路在其后探测标记：标记已 done 即跳过，避免重复推送。
     - cron: '0 1 * * 1-5'
   workflow_dispatch:   # 允许在 Actions 页面手动触发测试
 
@@ -22,27 +21,59 @@ jobs:
       - name: 检出代码
         uses: actions/checkout@v4
 
-      # 兜底判定：本地链路若已发布当日研报，此处直接收工
-      # ⚠️ 宽限期说明：本地链路 08:30 启动，数据抓取约 2 分钟、HTML+PDF 约 3 分钟、
-      #    发布到 Pages 约 5 分钟，即 PDF 通常 08:40-08:45 才上线。
-      #    若客户端唤醒有抖动、09:00 时还没发布，这里再等最多 8 分钟（每 60s 探测一次），
-      #    避免两条链路同时生成、用户收到两条重复推送。
-      - name: 检查本地链路是否已发布当日研报
+      # ╔══════════════════════════════════════════════════════════════╗
+      # ║ 双向去重 gate：桌面端与云端共用 gh-pages 上的                     ║
+      # ║   pushed-YYYY-MM-DD.json 作为「今日推送已完成」的唯一事实来源。  ║
+      # ║ 规则：                                                          ║
+      # ║   - 标记 status=done            -> 今日已由某端完成，跳过        ║
+      # ║   - 标记 started/desktop 且<20分 -> 桌面端进行中，继续等待       ║
+      # ║   - 标记 started/desktop 且≥20分 -> 桌面端疑似卡死，云端接手      ║
+      # ║   - 标记不存在(404)             -> 最多等 12 分钟，仍无则接手     ║
+      # ║   - 兜底：标记始终未出现时，探测桌面端 ASCII PDF（旧逻辑）       ║
+      # ╚══════════════════════════════════════════════════════════════╝
+      - name: 检查双向去重标记（今日是否已推送）
         id: gate
         run: |
-          url="$PAGES_BASE/market-report-$(date +%F).pdf"
-          for i in $(seq 1 9); do
-            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$url")
-            echo "[$i/9] $(date '+%H:%M:%S') probe $url -> $code"
+          DATE=$(date +%F)
+          MARKER_URL="$PAGES_BASE/pushed-$DATE.json"
+          PDF_URL="$PAGES_BASE/market-report-$DATE.pdf"
+          skip=false
+          for i in $(seq 1 12); do
+            code=$(curl -s -o /tmp/marker.json -w "%{http_code}" --max-time 30 "$MARKER_URL")
+            echo "[$i/12] $(date '+%H:%M:%S') probe $MARKER_URL -> $code"
             if [ "$code" = "200" ]; then
-              echo "skip=true" >> "$GITHUB_OUTPUT"
-              echo "本地链路已发布当日研报，云端跳过"
-              exit 0
+              status=$(python3 -c "import json,sys;print(json.load(open('/tmp/marker.json')).get('status',''))" 2>/dev/null || true)
+              src=$(python3 -c "import json,sys;print(json.load(open('/tmp/marker.json')).get('source',''))" 2>/dev/null || true)
+              ts=$(python3 -c "import json,sys;print(json.load(open('/tmp/marker.json')).get('ts',''))" 2>/dev/null || true)
+              if [ "$status" = "done" ]; then
+                echo "标记显示今日已由 $src 完成推送，云端跳过"
+                skip=true; break
+              fi
+              if [ "$status" = "started" ] && [ "$src" = "desktop" ]; then
+                age=$(( ( $(date +%s) - $(date -d "$ts" +%s 2>/dev/null || echo 0) ) / 60 ))
+                if [ "$age" -lt 20 ]; then
+                  echo "桌面端进行中（${age}分），继续等待标记变为 done"
+                else
+                  echo "桌面端 started 已超 ${age} 分，云端接手生成"
+                  break
+                fi
+              else
+                echo "标记状态=$status/$src，继续等待"
+              fi
+            else
+              echo "标记尚未生成，继续等待（共 12 轮）"
             fi
-            if [ "$i" -lt 9 ]; then sleep 60; fi
+            if [ "$i" -lt 12 ]; then sleep 60; fi
           done
-          echo "skip=false" >> "$GITHUB_OUTPUT"
-          echo "宽限期内仍未检测到当日研报，云端接手生成"
+          # 兜底：标记始终未出现时，沿用旧逻辑探测桌面端 ASCII PDF
+          if [ "$skip" != "true" ]; then
+            code=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 "$PDF_URL")
+            if [ "$code" = "200" ]; then
+              echo "探测到桌面端已发布研报 PDF，云端跳过"
+              skip=true
+            fi
+          fi
+          echo "skip=$skip" >> "$GITHUB_OUTPUT"
 
       - name: 配置 Python
         if: steps.gate.outputs.skip != 'true'
@@ -73,6 +104,29 @@ jobs:
         if: steps.gate.outputs.skip != 'true'
         working-directory: ./output
         run: cp market-report-$(date +%F).html index.html
+
+      - name: 写入去重标记（done/cloud）
+        # ⚠️ 必须在「发布」之前写，使 peaceiris 把标记一并带上 gh-pages；
+        #    main.py 已成功推送微信后才会执行到本步（上方步骤失败则 job 中止）。
+        if: steps.gate.outputs.skip != 'true'
+        run: |
+          DATE=$(date +%F)
+          python3 - <<'PY'
+          import json, os
+          from datetime import datetime, timezone, timedelta
+          CST = timezone(timedelta(hours=8))
+          d = {
+              "date": os.environ["DATE"],
+              "ts": datetime.now(CST).isoformat(timespec="seconds"),
+              "source": "cloud",
+              "status": "done",
+              "flow_id": "cloud-workflow",
+              "title": "市场晨报（云端兜底）"
+          }
+          with open(f"output/pushed-{d['date']}.json", "w", encoding="utf-8") as f:
+              json.dump(d, f, ensure_ascii=False, indent=2)
+          print("wrote output/pushed-%s.json" % d["date"])
+          PY
 
       - name: 发布到 GitHub Pages
         # ⚠️ 必须带 gate 条件：keep_files=false 会清空 gh-pages，
