@@ -96,9 +96,13 @@ table.overview tr:nth-child(even) td { background: #fff; }
 .card li { padding: 1.5px 0 1.5px 11px; position: relative; font-size: 11px; line-height: 1.42; color: #3a4150; }
 .card li::before { content: "\25B8"; position: absolute; left: 0; color: #c9a227; font-size: 9px; }
 .card-grid { display: block; margin-bottom: 8px; }
-.card-grid::after { content: ""; display: block; clear: both; }
-.card-grid > .card { float: left; width: 49.2%; box-sizing: border-box; }
-.card-grid > .card:nth-child(odd) { margin-right: 1.6%; }
+/* 每行两张卡：用 flex 让同行卡片等高对齐。
+   ⚠️ 不可用 float 两列——卡片内容长短不一时，第二行会被上一行较高的卡"顶"下去，
+   出现错层/不对齐（2026-10-15 用户反馈）。每个 .card-row 只含一行，
+   跨页发生在行与行之间，不影响分页密度。 */
+.card-row { display: flex; gap: 8px; margin-bottom: 8px; page-break-inside: avoid; }
+.card-row:last-child { margin-bottom: 0; }
+.card-row > .card { flex: 1 1 0; min-width: 0; width: auto; float: none; margin-bottom: 0; box-sizing: border-box; }
 .sec-h4 { font-size: 13px; font-weight: 700; margin: 10px 0 6px 0; padding: 5px 9px 5px 12px; border-radius: 6px; page-break-after: avoid; page-break-inside: avoid; }
 .sec-h4-blue { background: #eef2fa; border-left: 4px solid #1d3f78; color: #14213d; }
 .sec-h4-red { background: #fef0f0; border-left: 4px solid #c0392b; color: #8b1a1a; }
@@ -166,8 +170,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 
 <!-- 二、宏观与政策要闻 -->
 <h2><span class="tag tag-macro">宏观</span> 二、宏观与政策要闻 <span class="en">MACRO &amp; POLICY</span></h2>
-<div class="card-grid">
-<div class="card gold">
+<div class="card-grid"><div class="card-row"><div class="card gold">
 <h3>中国政策与市场</h3>
 <ul>
 <li><b>9月金融数据</b>：M2余额359.63万亿元同比<b>+7.2%</b>、M1 +3.2%；前三季度人民币存款增加20.76万亿元——流动性充裕托底</li>
@@ -175,8 +178,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li><b>A股缩量调整</b>：超4,400股下跌、成交缩量2,625亿——AI硬件（光通信/存储/GPU）获利了结，资源与传媒承接</li>
 <li><b>沪电股份</b>：前三季度净利预增超100%——AI-PCB景气延续的业绩验证</li>
 </ul>
-</div>
-<div class="card purple">
+</div><div class="card purple">
 <h3>美联储路径与美债</h3>
 <ul>
 <li><b>9月CPI超预期</b>：同比<b>3.7%</b>（预期3.6%）、环比0.6%（汽油+9.1%贡献过半）；核心同比2.6%/环比0.3%均高于预期</li>
@@ -184,8 +186,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li><b>美债喘息</b>：数据公布前收益率续降——10Y 5.19%（-2.5bp，近两周低点）、30Y 5.52%（-3.9bp，四连降为6月来最长）</li>
 <li><b>债务警钟</b>：达利欧称美债熊市"还有很长的路"；戴蒙提醒为10Y升破6%做好准备；BofA调查：37%基金经理在10Y达6%时股转债</li>
 </ul>
-</div>
-<div class="card blue">
+</div></div><div class="card-row"><div class="card blue">
 <h3>地缘与商品</h3>
 <ul>
 <li><b>霍尔木兹再遇袭</b>：两艘船只遭袭、伊朗对路透证实正用"新战术"打击航运——供应中断风险再升温，WTI 95.17（+1.09%）、布油106.11</li>
@@ -193,8 +194,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li><b>贵金属重挫</b>：现货金$4,105.2（-1.33%）失守$4,150；白银$55.61（-5.99%）暴跌近6%失守56——强美元+加息预期双杀</li>
 <li><b>柴油紧缺</b>：IEA月报——中东/俄罗斯出口受阻，全球柴油供应紧张将持续至2027年，能源通胀粘性源头</li>
 </ul>
-</div>
-<div class="card green">
+</div><div class="card green">
 <h3>AI产业与科技大事</h3>
 <ul>
 <li><b>费半六连跌</b>：指数-4.3%创2025年5月以来最长连跌——SK海力士-6%、闪迪-5%、美光/西数-4%，存储抛售+高利率双重压制</li>
@@ -202,12 +202,11 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li><b>AI债务叙事发酵</b>：CoreWeave -15%、戴尔-11%（巴克莱下调）、甲骨文-8.8%——"高杠杆AI基建"模式遭集中质疑</li>
 <li><b>阿斯麦</b>：未来两年设备需求仍无法完全满足（欧股科技领涨）；<b>Anthropic今晚投资者会议</b>首披Q3财务，ARR为关键（IPO前哨战）</li>
 </ul>
-</div>
-</div>
+</div></div></div>
 
 <!-- 三、美股深度分析 -->
 <h2><span class="tag tag-macro">宏观</span> 三、美股深度分析 <span class="en">US MARKET DEEP DIVE</span></h2>
-<div class="card-grid"><div class="card blue">
+<div class="card-grid"><div class="card-row"><div class="card blue">
 <h3>1. 指数与估值水平</h3>
 <ul>
 <li>纳指26,692.87（-1.88%，<b>7月23日来最大单日跌幅</b>）、标普7,718.94（-1.11%）、道指51,621.48（-0.09%，医疗保健对冲显韧性）</li>
@@ -223,7 +222,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li><b>防御跑赢</b>：联合健康+4.7%、安进+3.2%、贝莱德+3%（AUM 15.49万亿创新高）——资金流向业绩确定性</li>
 <li><b>欧股背离</b>：STOXX 600 +0.6%、阿斯麦一度+3.6%——欧科技估值低+ASML需求指引强劲</li>
 </ul>
-</div><div class="card green">
+</div></div><div class="card-row"><div class="card green">
 <h3>3. 资金与情绪面</h3>
 <ul>
 <li>VIX 16.87（+9.48%）：单日跳升近10%——CPI冲击+费半六连跌触发对冲需求</li>
@@ -239,7 +238,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li><b>油价-通胀螺旋</b>：AAA汽油均价$4.33/加仑（一年前$3.08）——能源向核心传导是12月路径的关键变量</li>
 <li><b>今日看点</b>：美国PPI/零售数据、Anthropic投资者会议；<b>10/16台积电财报</b>为本周收官验证</li>
 </ul>
-</div></div><div class="card-grid"><div class="card blue">
+</div></div><div class="card-row"><div class="card blue">
 <h3>5. AI产业链景气跟踪</h3>
 <ul>
 <li><b>存储链三连杀</b>：长鑫4F² DRAM重估发酵第三日+韩股传染——美光5日+220.54%、闪迪5日+491.18%；HBM涨价周期未证伪，但情绪面先杀估值</li>
@@ -256,7 +255,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li><b>微软</b>：前日创2025年10月来新高后回踩，自研AI芯片部署推进，4万亿美元市值上方整固</li>
 <li><b>非科技焦点</b>：美银-4.8%（12亿美元反洗钱处罚）、贝莱德+3%、强生前日-5.7%——财报季个股贝塔放大</li>
 </ul>
-</div></div>
+</div></div></div>
 
 
 
@@ -348,8 +347,7 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <h2><span class="tag tag-decision">决策</span> 八、综合建议与风险提示 <span class="en">STRATEGY &amp; RISK</span></h2>
 
 <div class="sec-h4 sec-h4-blue">综合建议</div>
-<div class="card-grid">
-<div class="card blue">
+<div class="card-grid"><div class="card-row"><div class="card blue">
 <h3>宏观策略</h3>
 <ul>
 <li><b>核心矛盾</b>：美国9月CPI 3.7%超预期——10月加息概率升至五五开、12月为基准，"通胀-加息-强美元"三元压制重启；达利欧/戴蒙齐警示美债熊市未完</li>
@@ -357,16 +355,14 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li><b>中国资产</b>：M2 +7.2%+央行7,000亿买断式逆回购呵护——流动性充裕+港股科网超跌反弹；但A股AI硬件缩量抛售，结构市延续</li>
 <li><b>地缘跨月</b>：霍尔木兹船只再遇袭+美以磋商选举前对伊联合打击——能源风险溢价与避险需求将贯穿11月初</li>
 </ul>
-</div>
-<div class="card green">
+</div><div class="card green">
 <h3>行业配置</h3>
 <ul>
 <li><b>超配</b>：能源高息股（XOM、中海油——霍尔木兹遇袭+WTI站上$95）；高股息防御（中移动、煤炭/公用）；短久期IG信用债锁息</li>
 <li><b>中性</b>：AI算力核心（NVDA/台积电/微软——逻辑未变但等待10/16台积电财报验证）；港股互联网平台（美团/阿里超跌反弹，反弹持续性待量能确认）；黄金（CPI压制下等待企稳信号）</li>
 <li><b>低配/规避</b>：AI高杠杆链（CoreWeave/戴尔/甲骨文类商业模式）；YTD极端涨幅AI新股（智谱YTD+360.41%、闪迪YTD+491.18%）；长久期利率敏感品种</li>
 </ul>
-</div>
-<div class="card gold">
+</div></div><div class="card-row"><div class="card gold">
 <h3>大类资产与固收</h3>
 <ul>
 <li><b>固收</b>：10Y 5.19%（-2.5bp）、30Y 5.52%四连降——CPI冲击下长端意外走稳；本期无合格IG新发，存量短中期持仓锁息为主，关注收益率冲高再配置窗口</li>
@@ -374,16 +370,14 @@ table.overview tr:nth-child(even) td { background: #fff; }
 <li><b>原油</b>：WTI $95.17、布油$106.11——伊朗"新战术"打击航运+美以选举前打击风险，风险溢价易涨难跌；IEA警示柴油紧缺至2027，持有能源股收租优于单边追油</li>
 <li><b>现金</b>：维持10%-15%；今晚美国PPI/零售+Anthropic披露+10/16台积电财报，事件密集不满仓</li>
 </ul>
-</div>
-<div class="card red">
+</div><div class="card red">
 <h3>仓位纪律</h3>
 <ul>
 <li><b>事件纪律</b>：美国PPI/零售+Anthropic ARR披露+10/16台积电财报+10/27-28 FOMC——事件链密集，不满仓、不上杠杆</li>
 <li><b>止盈止损</b>：短线标的-8%至-10%硬止损；存储/AI链高位品种（闪迪5日+491.18%）反弹减仓、严禁抄底追高</li>
 <li><b>分散化</b>：单一行业≤30%、单一标的≤15%；科技敞口用高股息+黄金+短久期IG信用债对冲"利率+AI叙事"双重波动</li>
 </ul>
-</div>
-</div>
+</div></div></div>
 
 <div class="sec-h4 sec-h4-red">风险提示</div>
 <div class="card red">
