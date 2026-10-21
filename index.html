@@ -98,6 +98,8 @@ table.overview .mkt {
 }
 table.overview tr.grp td { border-top: 2px solid #dfe6f2; }
 table.overview tr:nth-child(even) td { background: #fff; }
+/* 自选股两块固定从新页开始：第五节→第3页、第六节→第4页（用户指定） */
+.pb { page-break-before: always; break-before: page; }
 /* 概览表：固定列宽 + 「关键信息」列右对齐（左侧细分隔线，右端留内边距） */
 table.overview { table-layout: fixed; }
 table.overview tbody td.ki {
@@ -312,7 +314,7 @@ td.advice .sug { margin-right: 4px; }
 </div>
 
 <!-- 五、美股自选股与买卖建议 -->
-<h2><span class="tag tag-target">标的</span> 五、美股自选股与买卖建议 <span class="en">US WATCHLIST</span> <span class="cnt">16只（个股14+ETF 2）· 10/20收盘 · $</span></h2>
+<h2 class="pb"><span class="tag tag-target">标的</span> 五、美股自选股与买卖建议 <span class="en">US WATCHLIST</span> <span class="cnt">16只（个股14+ETF 2）· 10/20收盘 · $</span></h2>
 <table class="watchlist">
 <thead>
 <tr><th style="width:13%">公司</th><th style="width:7%">现价</th><th style="width:8%">涨跌幅</th><th style="width:4.5%">PE</th><th style="width:8%">总市值</th><th style="width:6.5%">5日</th><th style="width:6.5%">20日</th><th style="width:8%">今年以来</th><th style="width:38.5%">建议</th></tr>
@@ -338,7 +340,7 @@ td.advice .sug { margin-right: 4px; }
 </table>
 
 <!-- 六、港股自选股与买卖建议 -->
-<h2><span class="tag tag-target">标的</span> 六、港股自选股与买卖建议 <span class="en">HK WATCHLIST</span> <span class="cnt">10只 · 10/20收盘 · HK$</span></h2>
+<h2 class="pb"><span class="tag tag-target">标的</span> 六、港股自选股与买卖建议 <span class="en">HK WATCHLIST</span> <span class="cnt">10只 · 10/20收盘 · HK$</span></h2>
 <table class="watchlist">
 <thead>
 <tr><th style="width:13.5%">公司</th><th style="width:7%">现价</th><th style="width:8%">涨跌幅</th><th style="width:4.5%">PE</th><th style="width:9.5%">市值</th><th style="width:6.5%">股息率</th><th style="width:6.5%">20日</th><th style="width:8%">今年以来</th><th style="width:36.5%">建议</th></tr>
@@ -360,7 +362,7 @@ td.advice .sug { margin-right: 4px; }
 
 
 <!-- 七、投资级美元债 -->
-<h2><span class="tag tag-config">配置</span> 七、投资级美元债 <span class="en">INVESTMENT-GRADE USD BONDS</span> <span class="cnt">10只（含2只新发）· $</span></h2>
+<h2><span class="tag tag-config">配置</span> 七、投资级美元债 <span class="en">INVESTMENT-GRADE USD BONDS</span> <span class="cnt">8只（含2只新发）· $</span></h2>
 <p class="note" style="margin-bottom:5px">美债无风险基准：10年期5.12%、30年期5.42%、2年期4.79%、5年期4.94%（10/20收盘）。<b>本期新增2只</b>：①腾讯控股10/13定价、10/21交割18亿美元双档债（6.10% 2036档T10+90bp认购超3倍 / 6.75% 2046档，同批260亿元点心债规模创市场新高）；②道富银行10/15定价$7.5亿固定转浮动（5.963% 2037，Aa3/A/AA-，10/20交割）。10Y美债5.12%高位，IG存量短中期锁息性价比突出。参考买入价以面值100计的估算值，以券商实时报价为准。</p>
 <table>
 <thead>
@@ -372,8 +374,6 @@ td.advice .sug { margin-right: 4px; }
 <tr><td style="text-align:left;font-weight:600">埃克森美孚</td><td>3.482%</td><td>2020-03-17</td><td>2030-03-19</td><td>~3.4年</td><td>~5.40%</td><td>≈95.0</td><td>Aa2/AA+</td><td style="text-align:left;font-size:11px">美国油企，现金流受益于油价高位（WTI ~102）</td></tr>
 <tr><td style="text-align:left;font-weight:600">汇丰控股</td><td>4.583%</td><td>2018-06-19</td><td>2029-06-19</td><td>~2.7年</td><td>~5.10%</td><td>≈98.8</td><td>A3/A-/A+</td><td style="text-align:left;font-size:11px">2028-06-19可赎回；高息差环境+持续回购支撑信用</td></tr>
 <tr><td style="text-align:left;font-weight:600">Alphabet(谷歌)</td><td>4.100%</td><td>2026-02-13</td><td>2031-02-15</td><td>~4.3年</td><td>~5.40%</td><td>≈96.0</td><td>Aa2/AA+</td><td style="text-align:left;font-size:11px">高等级信用；股价波动与信用基本面无关</td></tr>
-<tr><td style="text-align:left;font-weight:600">Xylem Inc.</td><td>5.250%</td><td>2026-09-29</td><td>2029-09-28</td><td>~2.9年</td><td>~5.00%</td><td>≈100.2</td><td>Baa2/BBB<br><span style="font-size:9px;color:#7d8694">穆迪/标普</span></td><td style="text-align:left;font-size:11px">全球水技术龙头；短久期+防御现金流</td></tr>
-<tr><td style="text-align:left;font-weight:600">Xylem Inc.</td><td>5.450%</td><td>2026-09-29</td><td>2032-01-15</td><td>~5.2年</td><td>~5.25%</td><td>≈100.4</td><td>Baa2/BBB<br><span style="font-size:9px;color:#7d8694">穆迪/标普</span></td><td style="text-align:left;font-size:11px">同批长档；公用事业型现金流，高利率期票息优势扩大</td></tr>
 <tr><td style="text-align:left;font-weight:600">美国银行</td><td>6.062%</td><td>2026-10-16</td><td>2037-10-20</td><td>~11.0年</td><td>~6.05%</td><td>≈100.0</td><td>A1/A-/AA-<br><span style="font-size:9px;color:#7d8694">穆迪/标普/惠誉</span></td><td style="text-align:left;font-size:11px">$27.5亿N系列MTN，平价发行；固定6.062%至2036年后转SOFR+130bp；美系大行高票息锁息</td></tr>
 <tr style="background:#fff9e6"><td style="text-align:left;font-weight:600">腾讯控股<span style="color:#c0392b;font-size:9px;font-weight:700;margin-left:3px">NEW</span></td><td>6.100%</td><td>2026-10-21</td><td>2036-10-21</td><td>~10.0年</td><td>~6.12%</td><td>≈99.86（新发）</td><td>A1/A+<br><span style="font-size:9px;color:#7d8694">穆迪/标普</span></td><td style="text-align:left;font-size:11px">$13亿档（10Y），T10+90bp、认购超3倍（196账户）；同批5亿美元6.75% 2046档；一般企业用途</td></tr>
 <tr style="background:#fff9e6"><td style="text-align:left;font-weight:600">道富银行<span style="color:#c0392b;font-size:9px;font-weight:700;margin-left:3px">NEW</span></td><td>5.963%</td><td>2026-10-20</td><td>2037-10-20</td><td>~11.0年</td><td>~5.96%</td><td>≈100.0（新发）</td><td>Aa3/A/AA-<br><span style="font-size:9px;color:#7d8694">穆迪/标普/惠誉</span></td><td style="text-align:left;font-size:11px">$7.5亿固定转浮动，T+88bp；固定5.963%至2036-10后转SOFR+122bp；全球托管龙头</td></tr>
