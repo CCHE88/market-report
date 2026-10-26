@@ -82,6 +82,8 @@ tbody tr:nth-child(even) td { background: #f7f9fc; }
 .up { color: #d32f2f; font-weight: 600; }
 .down { color: #2e7d32; font-weight: 600; }
 table.watchlist { table-layout: fixed; }
+table.bonds { table-layout: fixed; }
+table.bonds tbody td { white-space: normal; }
 table.watchlist thead th { white-space: normal; }
 table.watchlist tbody td { white-space: nowrap; padding: 1.7px 6px; }
 table.watchlist tbody td.advice { white-space: normal; }
@@ -344,7 +346,7 @@ td.advice .sug { margin-right: 4px; }
 <tr><th style="width:13.5%">公司</th><th style="width:7%">现价</th><th style="width:8%">涨跌幅</th><th style="width:4.5%">PE</th><th style="width:9.5%">市值</th><th style="width:6.5%">股息率</th><th style="width:6.5%">20日</th><th style="width:8%">今年以来</th><th style="width:36.5%">建议</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left;font-weight:600">腾讯控股<br><span class="sec">互联网/AI·混元</span></td><td>385.40</td><td><span class="pill down">-0.16%</span></td><td>12.9</td><td>HK$3.50万亿</td><td>1.38%</td><td><span class="pill down">-12.09%</span></td><td><span class="pill down">-35.09%</span></td><td class="advice"><span class="sug sug-hold">持有</span> PE 12.9+股息1.38%，10月26日（周一）盘中-0.16%报HK$385.40；恒科回调中相对抗跌（20日-12.09%），回购+6.100% 2036新债支撑，持有</td></tr>
+<tr><td style="text-align:left;font-weight:600">腾讯控股<br><span class="sec">互联网/AI·混元</span></td><td>385.40</td><td><span class="pill down">-0.16%</span></td><td>12.9</td><td>HK$3.50万亿</td><td>1.38%</td><td><span class="pill down">-12.09%</span></td><td><span class="pill down">-35.09%</span></td><td class="advice"><span class="sug sug-hold">持有</span> PE 12.9+股息1.38%，10月26日（周一）盘中-0.16%报HK$385.40；恒科回调中相对抗跌（20日-12.09%），回购托底+南向定价权，持有</td></tr>
 <tr><td style="text-align:left;font-weight:600">阿里巴巴-W<br><span class="sec">电商/云/AI·通义</span></td><td>96.60</td><td><span class="pill down">-1.23%</span></td><td>22.8</td><td>HK$1.92万亿</td><td>1.03%</td><td><span class="pill down">-12.18%</span></td><td><span class="pill down">-31.86%</span></td><td class="advice"><span class="sug sug-hold">持有</span> 10月26日（周一）盘中<b>-1.23%</b>报HK$96.60，YTD-31.86%；云智主线未变但5日-11.21%补跌，估值低位持有</td></tr>
 <tr><td style="text-align:left;font-weight:600">美团-W<br><span class="sec">本地生活/AI·自研</span></td><td>72.45</td><td><span class="pill up">+1.12%</span></td><td>亏损</td><td>HK$4474亿</td><td>—</td><td><span class="pill up">+0.28%</span></td><td><span class="pill down">-29.86%</span></td><td class="advice"><span class="sug sug-hold">持有</span> PE亏损，10月26日（周一）盘中<b>+1.12%</b>报HK$72.45逆势上涨、20日+0.28%转正；外卖补贴战缓和，持有</td></tr>
 <tr><td style="text-align:left;font-weight:600">智谱<br><span class="sec">AI大模型·智谱清言</span></td><td>472.60</td><td><span class="pill down">-5.29%</span></td><td>亏损</td><td>HK$2304亿</td><td>—</td><td><span class="pill down">-23.76%</span></td><td><span class="pill up">+318.93%</span></td><td class="advice"><span class="sug sug-caution">高估警惕</span> PE亏损，10月26日（周一）盘中<b>-5.29%</b>报HK$472.60；<b>月之暗面发布Kimi K3.1 Pro（3万亿参数）</b>引发竞争担忧，20日-23.76%，题材驱动只做情绪不做仓位</td></tr>
@@ -358,22 +360,20 @@ td.advice .sug { margin-right: 4px; }
 </table>
 
 <!-- 七、投资级美元债 -->
-<h2><span class="tag tag-config">配置</span> 七、投资级美元债 <span class="en">INVESTMENT-GRADE USD BONDS</span> <span class="cnt">9只（含2只新发）· $</span></h2>
-<p style="font-size:9.6px;color:#7d8694;margin-bottom:3px;line-height:1.42;">美债无风险基准：10年期<b>4.995%</b>（10/23，+4.15bp，重回5%关口）、30年期5.32%、2年期4.68%、5年期4.81%。<b>本期新增 2 只新发</b>：①沃尔玛 5.050% 2029（10/19定价、10/23交割，$7.5亿，Aa2/AA，T+约30bp，顶级信用+5%票息）；②金佰利 5.300% 2029（10/19定价、10/29交割，$10亿，A2/A-，为收购Kenvue融资，含101%特别强制赎回条款）。美国银行6.062% 2037、Workday 6.300% 2033 本期轮出跟踪。参考买入价以面值100计的估算值，以券商实时报价为准。</p>
-<table>
+<h2><span class="tag tag-config">配置</span> 七、投资级美元债 <span class="en">INVESTMENT-GRADE USD BONDS</span> <span class="cnt">7只（含2只新发）· $</span></h2>
+<p style="font-size:9.6px;color:#7d8694;margin-bottom:3px;line-height:1.42;">美债无风险基准：10年期<b>4.995%</b>（10/23，+4.15bp，重回5%关口）、30年期5.32%、2年期4.68%、5年期4.81%。<b>本期新增 2 只新发</b>：①沃尔玛 5.050% 2029（10/19定价、10/23交割，$7.5亿，Aa2/AA，T+约30bp）；②金佰利 5.300% 2029（10/19定价、10/29交割，$10亿，A2/A-，为收购Kenvue融资，含101%特别强制赎回）。腾讯 6.100% 2036、Workday 5.700% 2029、美国银行 6.062% 2037 本期轮出。参考买入价为按面值100计的估算值。</p>
+<table class="bonds">
 <thead>
 <tr><th style="width:12%">发行人</th><th style="width:7%">票息</th><th style="width:9%">发行日</th><th style="width:9%">到期日</th><th style="width:7.5%">剩余期限</th><th style="width:8.5%">参考YTM</th><th style="width:9.5%">参考买入价</th><th style="width:9.5%">评级</th><th style="width:28%">备注</th></tr>
 </thead>
 <tbody>
-<tr><td style="text-align:left;font-weight:600">腾讯控股</td><td>2.390%</td><td>2020-06-03</td><td>2030-06-03</td><td>~3.6年</td><td>~5.45%</td><td>≈92.5</td><td>A</td><td style="text-align:left;font-size:10.3px">低票息高信用质量；与新发5%+档搭配拉高组合票息</td></tr>
-<tr><td style="text-align:left;font-weight:600">阿里巴巴</td><td>4.875%</td><td>2024-11-26</td><td>2030-05-26</td><td>~3.6年</td><td>~5.50%</td><td>≈99.3</td><td>A</td><td style="text-align:left;font-size:10.3px">高票息+短期限，A级中性价比突出</td></tr>
-<tr><td style="text-align:left;font-weight:600">埃克森美孚</td><td>3.482%</td><td>2020-03-17</td><td>2030-03-19</td><td>~3.4年</td><td>~5.40%</td><td>≈95.8</td><td>Aa2/AA+</td><td style="text-align:left;font-size:10.3px">布油116美元显著改善现金流，最高等级能源债</td></tr>
-<tr><td style="text-align:left;font-weight:600">汇丰控股</td><td>4.583%</td><td>2018-06-19</td><td>2029-06-19</td><td>~2.7年</td><td>~5.10%</td><td>≈98.8</td><td>A3/A-/A+</td><td style="text-align:left;font-size:10.3px">2028-06-19可赎回；10/27公布三季报，高息差支撑信用</td></tr>
-<tr><td style="text-align:left;font-weight:600">Alphabet(谷歌)</td><td>4.100%</td><td>2026-02-13</td><td>2031-02-15</td><td>~4.3年</td><td>~5.40%</td><td>≈97.2</td><td>Aa2/AA+</td><td style="text-align:left;font-size:10.3px">高等级信用；10/28财报，股价波动不影响信用基本面</td></tr>
-<tr><td style="text-align:left;font-weight:600">腾讯控股</td><td>6.100%</td><td>2026-10-21</td><td>2036-10-21</td><td>~10.0年</td><td>~6.12%</td><td>≈99.86</td><td>A1/A+</td><td style="text-align:left;font-size:10.3px">$13亿档，认购超3倍（196账户）；10/22获准在港交所上市</td></tr>
-<tr><td style="text-align:left;font-weight:600">Workday</td><td>5.700%</td><td>2026-10-21</td><td>2029-10-23</td><td>~3.0年</td><td>~5.73%</td><td>≈99.91</td><td>BBB+/Baa1<br><span style="font-size:9px;color:#7d8694">标普/穆迪</span></td><td style="text-align:left;font-size:10.3px">$7.5亿，T+82bp，10/23交割完成；置换2027年到期3.500%旧债，3年高票息IG</td></tr>
-<tr style="background:#fff9e6"><td style="text-align:left;font-weight:600">沃尔玛<span style="color:#c0392b;font-size:9px;font-weight:700;margin-left:3px">NEW</span></td><td>5.050%</td><td>2026-10-19</td><td>2029-10</td><td>~3.0年</td><td>~5.05%</td><td>≈99.92（新发）</td><td>Aa2/AA/AA<br><span style="font-size:9px;color:#7d8694">穆迪/标普/惠誉</span></td><td style="text-align:left;font-size:10.3px">$7.5亿，T+约30bp，10/23交割；同批美元4档合计$30亿，顶级信用+5%票息压舱石</td></tr>
-<tr style="background:#fff9e6"><td style="text-align:left;font-weight:600">金佰利<span style="color:#c0392b;font-size:9px;font-weight:700;margin-left:3px">NEW</span></td><td>5.300%</td><td>2026-10-19</td><td>2029-10</td><td>~3.0年</td><td>~5.31%</td><td>≈99.9（新发）</td><td>A2/A-<br><span style="font-size:9px;color:#7d8694">展望负面</span></td><td style="text-align:left;font-size:10.3px">$10亿144A/RegS，为$487亿收购Kenvue融资，10/29交割；含101%特别强制赎回条款，收购失败可回售</td></tr>
+<tr><td style="text-align:left;font-weight:600">腾讯控股</td><td>2.390%</td><td>2020-06-03</td><td>2030-06-03</td><td>~3.6年</td><td>~5.45%</td><td>≈92.5</td><td>A</td><td style="text-align:left;font-size:10.3px">低票息高信用；与新发5%档搭配抬升票息</td></tr>
+<tr><td style="text-align:left;font-weight:600">阿里巴巴</td><td>4.875%</td><td>2024-11-26</td><td>2030-05-26</td><td>~3.6年</td><td>~5.50%</td><td>≈99.3</td><td>A</td><td style="text-align:left;font-size:10.3px">高票息+短期限，A级中性价比较好</td></tr>
+<tr><td style="text-align:left;font-weight:600">埃克森美孚</td><td>3.482%</td><td>2020-03-17</td><td>2030-03-19</td><td>~3.4年</td><td>~5.40%</td><td>≈95.8</td><td>Aa2/AA+</td><td style="text-align:left;font-size:10.3px">布油116美元改善现金流，最高等级能源债</td></tr>
+<tr><td style="text-align:left;font-weight:600">汇丰控股</td><td>4.583%</td><td>2018-06-19</td><td>2029-06-19</td><td>~2.7年</td><td>~5.10%</td><td>≈98.8</td><td>A3/A-/A+</td><td style="text-align:left;font-size:10.3px">2028-06-19可赎回；10/27三季报，高息差支撑</td></tr>
+<tr><td style="text-align:left;font-weight:600">Alphabet(谷歌)</td><td>4.100%</td><td>2026-02-13</td><td>2031-02-15</td><td>~4.3年</td><td>~5.40%</td><td>≈97.2</td><td>Aa2/AA+</td><td style="text-align:left;font-size:10.3px">高等级信用；10/28财报不影响信用基本面</td></tr>
+<tr style="background:#fff9e6"><td style="text-align:left;font-weight:600">沃尔玛<span style="color:#c0392b;font-size:9px;font-weight:700;margin-left:3px">NEW</span></td><td>5.050%</td><td>2026-10-19</td><td>2029-10-23</td><td>~3.0年</td><td>~5.05%</td><td>≈99.92（新发）</td><td>Aa2/AA/AA<br><span style="font-size:9px;color:#7d8694">穆迪/标普/惠誉</span></td><td style="text-align:left;font-size:10.3px">$7.5亿，T+约30bp，10/23交割；同批4档$30亿，顶级信用压舱石</td></tr>
+<tr style="background:#fff9e6"><td style="text-align:left;font-weight:600">金佰利<span style="color:#c0392b;font-size:9px;font-weight:700;margin-left:3px">NEW</span></td><td>5.300%</td><td>2026-10-19</td><td>2029-10</td><td>~3.0年</td><td>~5.31%</td><td>≈99.9（新发）</td><td>A2/A-<br><span style="font-size:9px;color:#7d8694">展望负面</span></td><td style="text-align:left;font-size:10.3px">$10亿144A，为收购Kenvue融资，10/29交割；含101%强制赎回</td></tr>
 </tbody>
 </table>
 
